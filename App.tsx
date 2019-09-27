@@ -1,21 +1,11 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import { generateThemeStore } from "./src/store/themeStore";
 
-import Card from "./src/components/Card";
+import RootScreen from "./src/screens/RootScreen";
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Card />
-    </View>
-  );
-}
+// Seeds localState
+generateThemeStore()
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const App = () => <RootScreen />
+
+export default App

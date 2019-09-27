@@ -1,0 +1,29 @@
+#type Card {
+#    ID: ID!
+#    title: String
+#    body: String
+#}
+#
+#type Cards {
+#    cards: Card
+#}
+
+type User {
+    name: String!
+}
+
+type Theme {
+    darkMode: Boolean!
+}
+
+extend type Root {
+    theme: Theme
+}
+
+input updateTheme {
+    darkMode: Boolean!
+}
+
+type Mutation {
+    toggleDarkMode(input: String!): String!
+}

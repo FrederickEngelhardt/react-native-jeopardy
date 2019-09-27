@@ -925,6 +925,11 @@
     xcode "^2.0.0"
     xmldoc "^0.4.0"
 
+"@restart/hooks@^0.3.1":
+  version "0.3.14"
+  resolved "https://registry.yarnpkg.com/@restart/hooks/-/hooks-0.3.14.tgz#1e0f045aadf0b06229b58eeba91351d90fb9452a"
+  integrity sha512-k57+iyGr6o1XHeWWsGe5aMHKYcw7fukL6mCE+ZrPjtt1gXei5wCUxj71yQYfFbNjg0z5xxX8Els/UmyJiEn4nw==
+
 "@types/fbemitter@^2.0.32":
   version "2.0.32"
   resolved "https://registry.yarnpkg.com/@types/fbemitter/-/fbemitter-2.0.32.tgz#8ed204da0f54e9c8eaec31b1eec91e25132d082c"
@@ -965,6 +970,14 @@
     "@types/prop-types" "*"
     "@types/react" "*"
 
+"@types/react-relay@^6.0.0":
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/@types/react-relay/-/react-relay-6.0.0.tgz#82bc7e78ef25f91a354ac27bb2802955ca1bc1d2"
+  integrity sha512-Ahcd6h7OjQtHabfDImKQo+pg57yHZY4Lw97xHMfh6iLLBkuqf6fqbo9f7n6uxnj+ed4NDPb6qaQmJ9pcCkFhgg==
+  dependencies:
+    "@types/react" "*"
+    "@types/relay-runtime" "*"
+
 "@types/react@*", "@types/react@^16.8.23":
   version "16.9.3"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-16.9.3.tgz#6d13251e441a3e67fb60d719d1fc8785b984a2ec"
@@ -972,6 +985,11 @@
   dependencies:
     "@types/prop-types" "*"
     csstype "^2.2.0"
+
+"@types/relay-runtime@*":
+  version "6.0.2"
+  resolved "https://registry.yarnpkg.com/@types/relay-runtime/-/relay-runtime-6.0.2.tgz#a5e71436ba0fbf053217ca19c3ac46f4a1c0bede"
+  integrity sha512-cKqpYwHndjYM1cYB9VeXceXc6k+KDoeChYOCiUFH53VMDgsQUUe2zRa3N52KnqSi0zowPlwS+/7x9CTQsjQmeg==
 
 "@types/uuid-js@^0.7.1":
   version "0.7.2"
@@ -4632,6 +4650,13 @@ relay-config@^6.0.0:
   integrity sha512-GBJviiK0U0APnrJf5RQu8HaNdRSN7MkCR3Ccgod0vOBbrQScHyzKqcuefkgr1lZxP85JuC6WC5FJn94nrUiE4Q==
   dependencies:
     cosmiconfig "^5.0.5"
+
+relay-hooks@^1.3.0:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/relay-hooks/-/relay-hooks-1.3.0.tgz#07ec87d51939591519803e2f8243d087349f79b2"
+  integrity sha512-6us5nOF5iECxbmMiK3jUxM+RyiCgz2RqZ/j56mIIsMDuROVQSuRRcUEJtIlj5Kdon0RxVpTe8QRxIZ5BmjB88w==
+  dependencies:
+    "@restart/hooks" "^0.3.1"
 
 relay-runtime@6.0.0:
   version "6.0.0"

@@ -1,53 +1,32 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
-import { graphql, QueryRenderer } from "react-relay";
-import environment from "../environment";
+import styled from "styled-components";
 
-export default function Card() {
+const CardContainer = styled.View`
+  background-color: ${props => props.theme.darkMode ? '#494949' : '#fff'}
+  padding: 12px;
+`;
+
+const TitleText = styled.Text`
+  font-size: 24px;
+  text-align: center;
+  color: ${props => !props.theme.darkMode ? '#000' : '#fff'}
+`;
+
+const Card = ({ title }) => {
   return (
-    <View style={styles.container}>
-      <QueryRenderer
-        environment={environment}
-        query={graphql`
-          query CardQuery {
-            allFilms {
-              edges {
-                node {
-                  id
-                  title
-                }
-              }
-            }
-          }
-        `}
-        render={({ error, props }) => {
-          if (error) {
-            console.warn(error);
-            return <Text>Failed</Text>;
-          }
-          if (!props) {
-            return <Text>Loading...</Text>;
-          }
-          console.log(props);
-          return (
-            <>
-            {props.allFilms.edges.map(({ node }) => {
-              console.log(node.title)
-              return <Text key={node.id}>{node.title}</Text>
-            })}
-            </>
-            )
-        }}
-      />
-    </View>
+    <CardContainer>
+      <TitleText>{title}</TitleText>
+    </CardContainer>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center"
-  }
-});
+export default Card;
+//
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     backgroundColor: "#fff",
+//     alignItems: "center",
+//     justifyContent: "center"
+//   }
+// });

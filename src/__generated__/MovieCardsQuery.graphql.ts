@@ -1,8 +1,8 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
-export type CardQueryVariables = {};
-export type CardQueryResponse = {
+export type MovieCardsQueryVariables = {};
+export type MovieCardsQueryResponse = {
     readonly allFilms: {
         readonly edges: ReadonlyArray<{
             readonly node: {
@@ -11,16 +11,19 @@ export type CardQueryResponse = {
             } | null;
         } | null> | null;
     } | null;
+    readonly theme: {
+        readonly darkMode: boolean;
+    } | null;
 };
-export type CardQuery = {
-    readonly response: CardQueryResponse;
-    readonly variables: CardQueryVariables;
+export type MovieCardsQuery = {
+    readonly response: MovieCardsQueryResponse;
+    readonly variables: MovieCardsQueryVariables;
 };
 
 
 
 /*
-query CardQuery {
+query MovieCardsQuery {
   allFilms {
     edges {
       node {
@@ -80,13 +83,36 @@ var v0 = [
         ]
       }
     ]
+  },
+  {
+    "kind": "ClientExtension",
+    "selections": [
+      {
+        "kind": "LinkedField",
+        "alias": null,
+        "name": "theme",
+        "storageKey": null,
+        "args": null,
+        "concreteType": "Theme",
+        "plural": false,
+        "selections": [
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "darkMode",
+            "args": null,
+            "storageKey": null
+          }
+        ]
+      }
+    ]
   }
 ];
 return {
   "kind": "Request",
   "fragment": {
     "kind": "Fragment",
-    "name": "CardQuery",
+    "name": "MovieCardsQuery",
     "type": "Root",
     "metadata": null,
     "argumentDefinitions": [],
@@ -94,18 +120,18 @@ return {
   },
   "operation": {
     "kind": "Operation",
-    "name": "CardQuery",
+    "name": "MovieCardsQuery",
     "argumentDefinitions": [],
     "selections": (v0/*: any*/)
   },
   "params": {
     "operationKind": "query",
-    "name": "CardQuery",
+    "name": "MovieCardsQuery",
     "id": null,
-    "text": "query CardQuery {\n  allFilms {\n    edges {\n      node {\n        id\n        title\n      }\n    }\n  }\n}\n",
+    "text": "query MovieCardsQuery {\n  allFilms {\n    edges {\n      node {\n        id\n        title\n      }\n    }\n  }\n}\n",
     "metadata": {}
   }
 };
 })();
-(node as any).hash = 'e1182e094c67ae490e1a4c07f7a475c1';
+(node as any).hash = '2d8b8b3bf9994b356aa5989deaa71408';
 export default node;
