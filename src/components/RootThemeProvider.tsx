@@ -39,18 +39,11 @@ const RootThemeProvider = (providerProps: Props) => {
     <QueryRenderer
       environment={environment}
       query={graphql`
-        query MovieCardsQuery {
-          allFilms {
-            edges {
-              node {
-                id
-                title
-              }
-            }
-          }
+        query RootThemeProviderQuery {
           theme {
             darkMode
           }
+          __typename
         }
       `}
       render={renderProps => renderQuery({ ...renderProps, ...providerProps })}

@@ -11,9 +11,6 @@ export type MovieCardsQueryResponse = {
             } | null;
         } | null> | null;
     } | null;
-    readonly theme: {
-        readonly darkMode: boolean;
-    } | null;
 };
 export type MovieCardsQuery = {
     readonly response: MovieCardsQueryResponse;
@@ -83,29 +80,6 @@ var v0 = [
         ]
       }
     ]
-  },
-  {
-    "kind": "ClientExtension",
-    "selections": [
-      {
-        "kind": "LinkedField",
-        "alias": null,
-        "name": "theme",
-        "storageKey": null,
-        "args": null,
-        "concreteType": "Theme",
-        "plural": false,
-        "selections": [
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "name": "darkMode",
-            "args": null,
-            "storageKey": null
-          }
-        ]
-      }
-    ]
   }
 ];
 return {
@@ -133,5 +107,5 @@ return {
   }
 };
 })();
-(node as any).hash = '2d8b8b3bf9994b356aa5989deaa71408';
+(node as any).hash = '7a7c9234fe8352c95dd46b941d0995bd';
 export default node;
