@@ -1,8 +1,7 @@
 import React from "react";
-import {graphql, QueryRenderer} from "react-relay";
-import { useQuery } from "relay-hooks";
+import { graphql, QueryRenderer } from "react-relay";
 import { ThemeProvider } from "styled-components";
-import {ActivityIndicator, Dimensions, Text} from "react-native";
+import { ActivityIndicator, Dimensions, Text } from "react-native";
 import environment from "../environment";
 
 export interface Theme {
@@ -23,7 +22,7 @@ const renderQuery = ({ error, props, children }) => {
     return <Text>Failed to load</Text>;
   }
   if (!props) {
-    return <ActivityIndicator />;
+    return <ActivityIndicator style={{ flex: 1 }} />;
   }
 
   const theme: Theme = {
@@ -32,13 +31,11 @@ const renderQuery = ({ error, props, children }) => {
     deviceWidth: width
   };
 
-  return (
-    <ThemeProvider theme={theme}>{children}</ThemeProvider>
-  );
+  return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
 };
 
 const RootThemeProvider = (providerProps: Props) => {
-	return (
+  return (
     <QueryRenderer
       environment={environment}
       query={graphql`
@@ -56,8 +53,8 @@ const RootThemeProvider = (providerProps: Props) => {
           }
         }
       `}
-      render={(renderProps) => renderQuery({...renderProps, ...providerProps})}
+      render={renderProps => renderQuery({ ...renderProps, ...providerProps })}
     />
-	)
+  );
 };
 export default RootThemeProvider;

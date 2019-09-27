@@ -1,16 +1,21 @@
 import React from "react";
-import { ActivityIndicator, StyleSheet, Text } from "react-native";
+import {
+  ActivityIndicator,
+  StyleSheet,
+  Text,
+} from "react-native";
 import { graphql, QueryRenderer } from "react-relay";
-import styled from "styled-components";
+import styled, { withTheme } from "styled-components";
 
 import environment from "../environment";
 import Card from "./Card";
+import { Theme } from "./RootThemeProvider";
 
-const MovieScrollView = styled.ScrollView`
-  background-color: #fff;
+// Looks like .attrs does not work for scrollview
+const MoviesView = styled.View`
+  background-color: ${props => (props.theme.darkMode ? "#494949" : "#fff")};
+  flex: 1;
 `;
-
-const ScrollCards = () => {};
 
 const renderQuery = ({ error, props }) => {
   if (error) {
@@ -25,7 +30,12 @@ const renderQuery = ({ error, props }) => {
   ));
 };
 
-const MovieCards = () => {
+interface Props {
+  theme: Theme;
+}
+
+const MovieCards = (props: Props) => {
+  const { darkMode } = props.theme;
   const generateCard = () => (
     <QueryRenderer
       environment={environment}
@@ -46,19 +56,19 @@ const MovieCards = () => {
   );
 
   return (
-    <MovieScrollView contentContainerStyle={styles.container}>
+    <MoviesView>
       {generateCard()}
-    </MovieScrollView>
+    </MoviesView>
   );
 };
 
-export default MovieCards;
+export default withTheme(MovieCards);
 
 const styles = StyleSheet.create({
-  container: {
+  container: darkMode => ({
     flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center"
-  }
+    flexGrow: 1,
+    backgroundColor: darkMode ? "#494949" : "#fff",
+    justifyContent: 'center'
+  })
 });

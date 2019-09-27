@@ -15,7 +15,8 @@ const NavBarContainer = styled.View`
 
 const AppTitleText = styled.Text`
   font-size: 28px;
-  color: ${({ theme }) => (theme.darkMode ? "#fff" : "#000")}
+  font-weight: 900;
+  color: #fff;
   height: 100%;
 `;
 

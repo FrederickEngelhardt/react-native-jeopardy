@@ -2,8 +2,8 @@ import React from "react";
 import styled from "styled-components";
 
 const CardContainer = styled.View`
-  background-color: ${props => props.theme.darkMode ? '#494949' : '#fff'}
   padding: 12px;
+  height: 150px;
 `;
 
 const TitleText = styled.Text`
