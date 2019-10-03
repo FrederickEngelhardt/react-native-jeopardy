@@ -2,7 +2,7 @@ import React from "react";
 import styled, { withTheme } from "styled-components";
 
 import NavBar from "../components/Navbar";
-import MovieCards from "../components/MovieCards";
+import MovieCards from "../containers/MovieCards";
 import { Theme } from "../components/RootThemeProvider";
 import { ScrollView, StatusBar, View } from "react-native";
 

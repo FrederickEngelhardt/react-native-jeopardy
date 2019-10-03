@@ -1,11 +1,13 @@
-import React from "react";
 import { generateThemeStore } from "./src/store/themeStore";
 
 import RootScreen from "./src/screens/RootScreen";
+import storybookEntry from './src/storybook/entry'
 
-// Seeds localState
-generateThemeStore()
+const storybook = true
 
-const App = () => <RootScreen />
+if (!storybook){
+  // Seeds localState
+  generateThemeStore()
+}
 
-export default App
+export default storybook ? storybookEntry : RootScreen

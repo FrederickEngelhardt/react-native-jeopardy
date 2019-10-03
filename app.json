@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "bumped poc project",
-    "slug": "rnBumpedPOC",
+    "name": "rnJeopardy",
+    "slug": "rnJeopardy",
     "privacy": "public",
     "sdkVersion": "35.0.0",
     "platforms": [

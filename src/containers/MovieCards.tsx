@@ -8,8 +8,8 @@ import { graphql, QueryRenderer } from "react-relay";
 import styled, { withTheme } from "styled-components";
 
 import environment from "../environment";
-import Card from "./Card";
-import { Theme } from "./RootThemeProvider";
+import Card from "../components/Card/Card";
+import { Theme } from "../components/RootThemeProvider";
 
 // Looks like .attrs does not work for scrollview
 const MoviesView = styled.View`
