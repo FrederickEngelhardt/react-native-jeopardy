@@ -1,10 +1,8 @@
 import React, { PureComponent } from "react";
-import { ActivityIndicator, Text } from "react-native";
-import { graphql, fetchQuery, QueryRenderer } from "react-relay";
-import styled, { withTheme } from "styled-components";
+import { ActivityIndicator } from "react-native";
+import { fetchQuery } from "react-relay";
 
 import environment from "../environment";
-import Card from "../components/Card/Card";
 import { Theme } from "../components/RootThemeProvider";
 import BoardModule from "../components/BoardModule/BoardModule";
 import {
@@ -31,7 +29,7 @@ class BoardModuleContainer extends PureComponent<Props> {
 
   fetch = async () => {
     try {
-      fetchQuery(environment, homePlanetsQuery, { cursor: "" }).then(data => {
+      fetchQuery(environment, homePlanetsQuery, {}).then(data => {
         const formattedData = formatHomePlanetQuery(data);
         this.setState((state: State) => ({
           data: [...state.data, formattedData]
@@ -43,7 +41,6 @@ class BoardModuleContainer extends PureComponent<Props> {
   };
 
   render() {
-    const { darkMode } = this.props.theme;
     const { data } = this.state;
 
     return data.length > 0 ? (
@@ -54,4 +51,4 @@ class BoardModuleContainer extends PureComponent<Props> {
   }
 }
 
-export default withTheme(BoardModuleContainer);
+export default BoardModuleContainer;

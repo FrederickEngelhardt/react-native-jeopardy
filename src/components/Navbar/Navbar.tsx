@@ -4,9 +4,10 @@ import { Animated, StyleSheet } from "react-native";
 
 import { Theme } from "../RootThemeProvider";
 import { toggleDarkMode } from "../../store/themeStore";
+import { black, lightBlue, white, yellow } from "../../constants/theming";
 
 const NavBarContainer = styled.View`
-  background-color: ${props => (props.theme.darkMode ? "#000000" : "#64d3ff")};
+  background-color: ${props => (props.theme.darkMode ? black : lightBlue)};
   height: ${({ theme }) => theme.deviceHeight / 10};
   padding-left: 12px;
   padding-right: 12px;
@@ -26,7 +27,7 @@ const ScoreContainer = styled.View`
 const AppTitleText = styled.Text`
   font-size: 28px;
   font-weight: 900;
-  color: #fff;
+  color: ${({ theme }) => (theme.darkMode ? white : black)};
 `;
 
 const ScoreText = styled(AppTitleText)`
@@ -34,13 +35,15 @@ const ScoreText = styled(AppTitleText)`
   margin-right: 12px;
 `;
 
-const DarkLightSwitch = styled.Switch`
+const DarkLightSwitch = styled.Switch.attrs(() => ({
+  trackColor: { true: yellow, false: white },
+  thumbColor: black
+}))`
   width: 50px;
 `;
 
 const styles = StyleSheet.create({
   text: {
-    color: "#fff",
     fontWeight: "900"
   }
 });
@@ -91,7 +94,8 @@ const NavBar = (props: Props) => {
                 inputRange: [0, 0.9, 1],
                 outputRange: [24, 30, 24],
                 extrapolate: "clamp"
-              })
+              }),
+              color: darkMode ? white : black
             },
             styles.text
           ]}

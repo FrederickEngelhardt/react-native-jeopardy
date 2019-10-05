@@ -1,9 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 
+import {black, fadedBlack, grey, yellow} from "../../constants/theming";
+
 export const CardContainer = styled.View`
   padding: 12px;
-  background-color: ${props => (props.theme.darkMode ? "rgba(0,0,0,.8)" : "#d1d1d1")};
+  background-color: ${props => (props.theme.darkMode ? fadedBlack : grey)};
   margin-bottom: 12px;
 `;
 
@@ -20,7 +22,7 @@ export const TitleText = styled.Text`
   font-size: 38px;
   text-align: center;
   font-weight: 600;
-  color: ${props => (props.theme.darkMode ? "#ffe81f" : "#000")};
+  color: ${props => (props.theme.darkMode ? yellow : black)};
 `;
 
 const QuestionHintTitleText = styled(TitleText)`

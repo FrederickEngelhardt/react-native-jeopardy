@@ -15,7 +15,7 @@ export function toggleDarkMode(toggleValue) {
 export function generateThemeStore() {
   commitLocalUpdate(environment, store => {
     const dataRecord = store.create(THEME_ID, "Theme");
-    dataRecord.setValue(false, DARK_MODE)
+    dataRecord.setValue(true, DARK_MODE)
     store.getRoot().setLinkedRecord(dataRecord, THEME_ID)
   });
 }

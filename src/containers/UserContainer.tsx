@@ -3,14 +3,7 @@ import { graphql, QueryRenderer } from "react-relay";
 import { ActivityIndicator, Text } from "react-native";
 import environment from "../environment";
 
-export interface Theme {
-  darkMode: boolean;
-  deviceHeight: number;
-  deviceWidth: number;
-}
-
 interface Props {
-  theme: Theme;
   children: React.ReactNode;
 }
 
@@ -22,11 +15,12 @@ const renderQuery = ({ error, props, children }) => {
     return <ActivityIndicator style={{ flex: 1 }} />;
   }
 
-  console.log('USER QUERY', props)
-
   return React.cloneElement(children, props);
 };
 
+/**
+ * Use this component to inject user localSchema into any ui-component
+ */
 const UserContainer = (providerProps: Props) => {
   return (
     <QueryRenderer

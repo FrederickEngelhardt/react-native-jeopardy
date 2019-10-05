@@ -1,12 +1,12 @@
 import React from "react";
-import { Animated } from "react-native";
 import styled from "styled-components";
 
 import Card, { Props as CardProps } from "../Card/Card";
 import CategoryHeadlineCard, {
   Props as HeadlineCardProps
 } from "../CategoryHeadlineCard/CategoryHeadlineCard";
-import {updateUserScore} from "../../store/userStore";
+import { updateUserScore } from "../../store/userStore";
+import { black, white } from "../../constants/theming";
 
 const ColumnView = styled.View`
   width: ${({ theme }) => theme.deviceWidth};
@@ -16,9 +16,9 @@ const CountText = styled.Text`
   text-align: center;
   font-size: 64px;
   font-weight: 900;
-  color: ${({ theme }) => theme.darkMode ? '#fff' : '#000'};
+  color: ${({ theme }) => (theme.darkMode ? white : black)};
   margin: 12px;
-`
+`;
 
 export interface Props {
   headlineCard: HeadlineCardProps;
@@ -49,10 +49,10 @@ class CategoryColumn extends React.PureComponent<Props, State> {
   }
 
   componentDidUpdate(): void {
-    const { timerCount, activeCardId} = this.state
+    const { timerCount, activeCardId } = this.state;
     if (timerCount === 0) {
-      clearInterval(this.timer)
-      updateUserScore(activeCardId)
+      clearInterval(this.timer);
+      updateUserScore(activeCardId);
       this.state.completedCards.add(activeCardId);
       this.setState({ hasTimer: false, timerCount: 15, activeCardId: null });
     }
@@ -75,24 +75,22 @@ class CategoryColumn extends React.PureComponent<Props, State> {
     return (
       <ColumnView>
         <CategoryHeadlineCard {...headlineCard} />
-        {hasTimer && (
-          <CountText>
-            {timerCount}
-          </CountText>
-        )}
-        {cards.filter(({ points}) => !completedCards.has(points)).map((props: CardProps) =>
-          !activeCardId ? (
-            <Card
-              {...props}
-              key={props.points}
-              handleToggle={() => this.handleCardOpen(props.points)}
-            />
-          ) : (
-            props.points === activeCardId && (
-              <Card {...props} key={props.points} isOpened />
+        {hasTimer && <CountText>{timerCount}</CountText>}
+        {cards
+          .filter(({ points }) => !completedCards.has(points))
+          .map((props: CardProps) =>
+            !activeCardId ? (
+              <Card
+                {...props}
+                key={props.points}
+                handleToggle={() => this.handleCardOpen(props.points)}
+              />
+            ) : (
+              props.points === activeCardId && (
+                <Card {...props} key={props.points} isOpened />
+              )
             )
-          )
-        )}
+          )}
       </ColumnView>
     );
   }
