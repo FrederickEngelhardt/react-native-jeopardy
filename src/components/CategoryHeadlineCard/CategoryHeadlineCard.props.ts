@@ -1,5 +1,5 @@
-const categoryColumnProps = {
+const categoryHeadlineProps = {
 	title: 'Characters'
 }
 
-export default categoryColumnProps
+export default categoryHeadlineProps

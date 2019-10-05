@@ -1,5 +1,5 @@
 import React from "react";
-import { SafeAreaView } from "react-native";
+import { Dimensions, SafeAreaView } from "react-native";
 import { ThemeProvider } from "styled-components";
 import {
   addDecorator,
@@ -10,14 +10,19 @@ import { boolean } from "@storybook/addon-knobs";
 
 import "./addons";
 
-declare var module
+const { height, width } = Dimensions.get("screen");
+
+const theme = {
+  deviceHeight: height,
+  deviceWidth: width
+};
 
 // Setup root ThemeProvider
 addDecorator(storyFn => (
-  <ThemeProvider theme={{ darkMode: boolean("toggle darkMode", true) }}>
-    <SafeAreaView>
-    {storyFn()}
-    </SafeAreaView>
+  <ThemeProvider
+    theme={{ ...theme, darkMode: boolean("toggle darkMode", true) }}
+  >
+    <SafeAreaView>{storyFn()}</SafeAreaView>
   </ThemeProvider>
 ));
 

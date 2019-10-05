@@ -1,7 +1,6 @@
-import cardProps from "../Card/Card.props";
-import categoryHeadlineCardProps from "../CategoryHeadlineCard/CategoryHeadlineCard.props";
+import categoryColumnProps from "../CategoryColumn/CategoryColumn.props";
 
-const categoryColumnProps = {
+const column2 = {
   cards: [
     {
       points: 100,
@@ -29,7 +28,11 @@ const categoryColumnProps = {
       questionText: "Apprentice of Plagueis?"
     },
   ],
-  headlineCard: { title: "Apprentices" }
+  headlineCard: { title: "Planets" }
+}
+
+const boardModuleProps = {
+  categoryColumns: [categoryColumnProps, column2]
 };
 
-export default categoryColumnProps;
+export default boardModuleProps;

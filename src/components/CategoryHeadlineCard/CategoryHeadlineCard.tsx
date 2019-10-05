@@ -11,12 +11,10 @@ const HeadlineText = styled(TitleText)`
   font-size: 48px;
 `;
 
-const CategoryHeadlineCard = ({ title }: Props) => {
-  return (
-    <CardContainer>
-      <HeadlineText>{title}</HeadlineText>
-    </CardContainer>
-  );
-};
+const CategoryHeadlineCard = ({ title }: Props) => (
+  <CardContainer>
+    <HeadlineText>{title}</HeadlineText>
+  </CardContainer>
+);
 
 export default CategoryHeadlineCard;

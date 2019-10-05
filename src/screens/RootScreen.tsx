@@ -1,6 +1,6 @@
 import React from "react";
 
-import RootThemeProvider, { Theme } from "../components/RootThemeProvider";
+import RootThemeProvider from "../components/RootThemeProvider";
 import HomeScreen from "./HomeScreen";
 
 const RootScreen = () => {

@@ -1,14 +1,15 @@
 import React from "react";
 import styled, { withTheme } from "styled-components";
 
-import NavBar from "../components/Navbar";
-import MovieCards from "../containers/MovieCards";
+import NavBar from "../components/Navbar/Navbar";
+import BoardModuleContainer from "../containers/BoardModuleContainer";
 import { Theme } from "../components/RootThemeProvider";
-import { ScrollView, StatusBar, View } from "react-native";
+import { ScrollView, StatusBar } from "react-native";
+import UserContainer from "../containers/UserContainer";
 
 const SafeAreaView = styled.SafeAreaView`
   flex: 1;
-  background-color: ${props => (props.theme.darkMode ? "#000000" : "#64d3ff")};
+  background-color: ${props => (props.theme.darkMode ? "#494949" : "#64d3ff")};
 `;
 
 interface Props {
@@ -21,9 +22,11 @@ const HomeScreen = (props: Props) => {
     <>
       <StatusBar barStyle={darkMode ? "light-content" : "dark-content"} />
       <SafeAreaView>
-        <NavBar />
+        <UserContainer>
+          <NavBar />
+        </UserContainer>
         <ScrollView>
-          <MovieCards />
+          <BoardModuleContainer />
         </ScrollView>
       </SafeAreaView>
     </>

@@ -1,7 +1,6 @@
 import React from "react";
 import { graphql, QueryRenderer } from "react-relay";
-import { ThemeProvider } from "styled-components";
-import { ActivityIndicator, Dimensions, Text } from "react-native";
+import { ActivityIndicator, Text } from "react-native";
 import environment from "../environment";
 
 export interface Theme {
@@ -11,10 +10,9 @@ export interface Theme {
 }
 
 interface Props {
+  theme: Theme;
   children: React.ReactNode;
 }
-
-const { height, width } = Dimensions.get("screen");
 
 const renderQuery = ({ error, props, children }) => {
   if (error) {
@@ -24,23 +22,20 @@ const renderQuery = ({ error, props, children }) => {
     return <ActivityIndicator style={{ flex: 1 }} />;
   }
 
-  const theme: Theme = {
-    darkMode: props.theme.darkMode,
-    deviceHeight: height,
-    deviceWidth: width
-  };
+  console.log('USER QUERY', props)
 
-  return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
+  return React.cloneElement(children, props);
 };
 
-const RootThemeProvider = (providerProps: Props) => {
+const UserContainer = (providerProps: Props) => {
   return (
     <QueryRenderer
       environment={environment}
       query={graphql`
-        query RootThemeProviderQuery {
-          theme {
-            darkMode
+        query UserContainerQuery {
+          user {
+            name
+            score
           }
           __typename
         }
@@ -49,4 +44,4 @@ const RootThemeProvider = (providerProps: Props) => {
     />
   );
 };
-export default RootThemeProvider;
+export default UserContainer;

@@ -9,21 +9,23 @@
 #}
 
 type User {
-    name: String!
+  name: String!
+  score: Int!
 }
 
 type Theme {
-    darkMode: Boolean!
+  darkMode: Boolean!
 }
 
 extend type Root {
-    theme: Theme
+  theme: Theme
+  user: User
 }
 
 input updateTheme {
-    darkMode: Boolean!
+  darkMode: Boolean!
 }
 
 type Mutation {
-    toggleDarkMode(input: String!): String!
+  toggleDarkMode(input: String!): String!
 }

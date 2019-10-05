@@ -1,7 +1,6 @@
 import React from "react";
 import {
   ActivityIndicator,
-  StyleSheet,
   Text,
 } from "react-native";
 import { graphql, QueryRenderer } from "react-relay";
@@ -63,12 +62,3 @@ const MovieCards = (props: Props) => {
 };
 
 export default withTheme(MovieCards);
-
-const styles = StyleSheet.create({
-  container: darkMode => ({
-    flex: 1,
-    flexGrow: 1,
-    backgroundColor: darkMode ? "#494949" : "#fff",
-    justifyContent: 'center'
-  })
-});
