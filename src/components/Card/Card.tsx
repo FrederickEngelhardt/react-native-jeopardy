@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 
-const CardContainer = styled.View`
+export const CardContainer = styled.View`
   padding: 24px;
-  background-color: ${props => (props.theme.darkMode ? "#6B6B6B" : "#d1d1d1")};
+  background-color: ${props => (props.theme.darkMode ? "#000" : "#d1d1d1")};
   // width: 80%;
   border-radius: 5px;
 `;
@@ -13,20 +13,18 @@ const TouchableContainer = styled.TouchableOpacity`
   align-self: center;
 `;
 
-const TitleText = styled.Text`
+export const TitleText = styled.Text`
   font-size: 38px;
   text-align: center;
-  color: ${props => (!props.theme.darkMode ? "#000" : "#fff")};
+  font-weight: 600;
+  color: ${props => (props.theme.darkMode ? "#ffe81f" : '#000')};
 `;
 
 const QuestionText = styled(TitleText)`
   font-size: 24px;
 `;
 
-export const closed = "CLOSED";
-export const opened = "OPENED";
-
-interface Props {
+export interface Props {
   isOpened: boolean
   handleToggle: () => void;
   points: number
@@ -42,7 +40,7 @@ const Card = ({ isOpened, title, points, questionText, handleToggle }: Props) =>
           <TitleText>{points}</TitleText>
         ) : (
           <>
-            <TitleText>{title}</TitleText>
+            { title && <TitleText>{title}</TitleText> }
             <QuestionText>{questionText}</QuestionText>
           </>
         )}

@@ -12,6 +12,7 @@ import {
   text,
   withKnobs
 } from "@storybook/addon-knobs";
+import {action} from "@storybook/addon-actions";
 
 storiesOf("Card", module)
   .addDecorator(withKnobs)
@@ -21,6 +22,6 @@ storiesOf("Card", module)
       title={text("Title Text", cardProps.title)}
       isOpened={boolean("Toggle Card Opened", cardProps.isOpened)}
       points={number("Card Points", cardProps.points)}
-      handleToggle={() => {}}
+      handleToggle={action('called toggleCard action')}
     />
   ));
