@@ -21,8 +21,9 @@ const CountText = styled.Text`
 `;
 
 export interface Props {
-  headlineCard: HeadlineCardProps;
   cards: [CardProps];
+  headlineCard: HeadlineCardProps;
+  updateUserScore(number): void;
 }
 
 interface State {
@@ -33,6 +34,9 @@ interface State {
 }
 
 class CategoryColumn extends React.PureComponent<Props, State> {
+  static defaultProps = {
+    updateUserScore
+  }
   state: State = {
     activeCardId: null,
     completedCards: new Set(),
@@ -50,6 +54,7 @@ class CategoryColumn extends React.PureComponent<Props, State> {
 
   componentDidUpdate(): void {
     const { timerCount, activeCardId } = this.state;
+    const { updateUserScore } = this.props;
     if (timerCount === 0) {
       clearInterval(this.timer);
       updateUserScore(activeCardId);

@@ -2,7 +2,7 @@
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
     "start": "expo start",
-    "dev": "rm -rf .expo; killall node; yarn start & yarn relay:watch",
+    "dev": "rm -rf .expo && yarn start & yarn relay:watch",
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",

@@ -1,14 +1,15 @@
 import React from "react";
-import { Dimensions, SafeAreaView } from "react-native";
+import { Dimensions, SafeAreaView, StatusBar } from "react-native";
 import { ThemeProvider } from "styled-components";
 import {
   addDecorator,
-  getStorybookUI,
-  configure
+  configure,
+  getStorybookUI
 } from "@storybook/react-native";
-import { boolean } from "@storybook/addon-knobs";
+import { boolean, select } from "@storybook/addon-knobs";
 
 import "./addons";
+import { darkGrey, lightBlue } from "../constants/theming";
 
 const { height, width } = Dimensions.get("screen");
 
@@ -22,7 +23,19 @@ addDecorator(storyFn => (
   <ThemeProvider
     theme={{ ...theme, darkMode: boolean("toggle darkMode", true) }}
   >
-    <SafeAreaView>{storyFn()}</SafeAreaView>
+    <StatusBar hidden={true} />
+    <SafeAreaView
+      style={{
+        flex: 1,
+        backgroundColor: select(
+          "blah",
+          { darkTheme: darkGrey, lightTheme: lightBlue },
+          darkGrey
+        )
+      }}
+    >
+      {storyFn()}
+    </SafeAreaView>
   </ThemeProvider>
 ));
 

@@ -36,7 +36,7 @@ const ScoreText = styled(AppTitleText)`
 `;
 
 const DarkLightSwitch = styled.Switch.attrs(() => ({
-  trackColor: { true: yellow, false: white },
+  trackColor: { true: white, false: white },
   thumbColor: black
 }))`
   width: 50px;
