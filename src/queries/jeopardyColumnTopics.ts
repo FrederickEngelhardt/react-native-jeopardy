@@ -107,6 +107,6 @@ export const formatHomePlanetQuery = (data: any) => {
 
   return {
     cards,
-    headlineCard: { title: "Homeworld" }
+    headlineCard: { title: "Character Homeworld" }
   };
 };

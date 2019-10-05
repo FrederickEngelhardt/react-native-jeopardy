@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
   }
 });
 
-const TITLE_TEXT = "SWAPI";
+const TITLE_TEXT = "Jeopardy";
 const SCORE_TEXT = "Score";
 
 interface Props {
