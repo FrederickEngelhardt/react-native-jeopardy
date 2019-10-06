@@ -1,7 +1,9 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { withTheme } from "styled-components";
+import { MaterialIcons } from "@expo/vector-icons";
 
-import {black, fadedBlack, grey, yellow} from "../../constants/theming";
+import { black, fadedBlack, grey, yellow } from "../../constants/theming";
+import { Theme } from "../RootThemeProvider";
 
 export const CardContainer = styled.View`
   padding: 12px;
@@ -11,11 +13,27 @@ export const CardContainer = styled.View`
 
 const PointCardContainer = styled(CardContainer)`
   border-radius: 5px;
-`
+`;
 
 const TouchableContainer = styled.TouchableOpacity`
   width: 80%;
   align-self: center;
+  opacity: ${(props) => props.disabled ? 0.2 : 1}
+`;
+
+export const RowView = styled.View`
+  flex-direction: row;
+  align-self: center;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  width: 100%;
+`;
+
+const BackButton = styled.TouchableOpacity`
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
 `;
 
 export const TitleText = styled.Text`
@@ -25,61 +43,117 @@ export const TitleText = styled.Text`
   color: ${props => (props.theme.darkMode ? yellow : black)};
 `;
 
-const QuestionHintTitleText = styled(TitleText)`
+const SmallTitleText = styled(TitleText)`
   font-size: 24px;
   text-align: left;
   font-weight: 900;
   text-transform: uppercase;
 `;
 
-const QuestionHintDescriptionText = styled(QuestionHintTitleText)`
+const DescriptionText = styled(SmallTitleText)`
   font-size: 18px;
   font-weight: 600;
   margin-bottom: 12px;
 `;
 
-export interface Props {
-  isOpened: boolean;
-  handleToggle: () => void;
+const BackText = styled(DescriptionText)`
+  font-size: 16px;
+  margin-bottom: 0;
+`;
+
+type QuestionHint = { title: string; value: string };
+
+export interface CardProps {
+  answers: Array<string>;
   points: number;
   title: string;
-  questionHints: [{ title: string; value: string }];
+  questionHints: Array<QuestionHint>;
+}
+
+export const QUESTION_STATE = "question";
+export const ANSWER_STATE = "answer";
+
+export type CardState = null | typeof QUESTION_STATE | typeof ANSWER_STATE;
+
+interface Props extends CardProps {
+  answersTextTitle?: string;
+  cardState?: CardState;
+  disabled: boolean;
+  handleToggle?: () => void;
+  handleBack?: () => void;
+  theme: Theme;
 }
 
 const Card = ({
-  isOpened,
-  title,
+  answers,
+  answersTextTitle,
+  cardState,
+  disabled,
+  handleToggle,
+  handleBack,
   points,
-  questionHints,
-  handleToggle
+  title,
+  theme: { darkMode },
+  questionHints
 }: Props) => {
-  return (
-    <TouchableContainer onPress={handleToggle}>
-      <PointCardContainer>
-        {!isOpened ? (
-          <TitleText>{points}</TitleText>
-        ) : (
+  const renderCardState = () => {
+    switch (cardState) {
+      case null: {
+        return <TitleText>{points}</TitleText>;
+      }
+      case QUESTION_STATE: {
+        return (
           <>
             {title && <TitleText>{title}</TitleText>}
             {questionHints.map(({ title: hintTitle, value: hintValue }) => {
               return (
                 <React.Fragment key={hintTitle}>
-                  <QuestionHintTitleText>{hintTitle}</QuestionHintTitleText>
-                  <QuestionHintDescriptionText>
-                    {hintValue}
-                  </QuestionHintDescriptionText>
+                  <SmallTitleText>{hintTitle}</SmallTitleText>
+                  <DescriptionText>{hintValue}</DescriptionText>
                 </React.Fragment>
               );
             })}
           </>
-        )}
-      </PointCardContainer>
+        );
+      }
+      case ANSWER_STATE: {
+        return (
+          <>
+            <RowView>
+              <SmallTitleText>{answersTextTitle}</SmallTitleText>
+              <BackButton focusable accessible onPress={handleBack}>
+                <MaterialIcons
+                  name={"arrow-back"}
+                  color={darkMode ? yellow : black}
+                  size={35}
+                />
+                <BackText>Back</BackText>
+              </BackButton>
+            </RowView>
+            {answers.map(answer => (
+              <DescriptionText key={answer}>{answer}</DescriptionText>
+            ))}
+          </>
+        );
+      }
+    }
+  };
+
+  return (
+    <TouchableContainer
+      disabled={disabled}
+      activeOpacity={cardState !== null ? 1 : 0.5}
+      onPress={handleToggle}
+    >
+      <PointCardContainer>{renderCardState()}</PointCardContainer>
     </TouchableContainer>
   );
 };
 
 Card.defaultProps = {
-  isOpened: false
+  answersTextTitle: "Answers",
+  isOpened: false,
+  cardState: null
 };
 
-export default Card;
+export default withTheme(Card);

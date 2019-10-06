@@ -1,14 +1,10 @@
 import React, { PureComponent } from "react";
 import { ActivityIndicator } from "react-native";
-import { fetchQuery } from "react-relay";
 
-import environment from "../environment";
 import { Theme } from "../components/RootThemeProvider";
 import BoardModule from "../components/BoardModule/BoardModule";
-import {
-  formatHomePlanetQuery,
-  homePlanetsQuery
-} from "../queries/jeopardyColumnTopics";
+import { fetchCharacterHomeWorld } from "../queries/characterHomeworld";
+import { fetchSpeciesHomeworld } from "../queries/speciesHomeworld";
 
 interface Props {
   theme: Theme;
@@ -18,26 +14,24 @@ interface State {
   data: [any];
 }
 
+const queries = [fetchCharacterHomeWorld, fetchSpeciesHomeworld]
+
 class BoardModuleContainer extends PureComponent<Props> {
   state = {
     data: []
   };
 
   async componentDidMount() {
-    this.fetch();
+    this.fetchAll();
   }
 
-  fetch = async () => {
-    try {
-      fetchQuery(environment, homePlanetsQuery, {}).then(data => {
-        const formattedData = formatHomePlanetQuery(data);
-        this.setState((state: State) => ({
-          data: [...state.data, formattedData]
-        }));
-      });
-    } catch (e) {
-      console.warn(e);
-    }
+  fetchAll = () => {
+    queries.forEach( async (query) => {
+      const data = await query()
+      this.setState((state: State) => ({
+        data: [...state.data, data]
+      }));
+    })
   };
 
   render() {

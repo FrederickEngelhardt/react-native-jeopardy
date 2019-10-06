@@ -1,10 +1,10 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
-export type jeopardyColumnTopicsQueryVariables = {
+export type characterHomeworldQueryVariables = {
     readonly cursor?: string | null;
 };
-export type jeopardyColumnTopicsQueryResponse = {
+export type characterHomeworldQueryResponse = {
     readonly allPlanets: {
         readonly planets: ReadonlyArray<{
             readonly id: string;
@@ -31,15 +31,15 @@ export type jeopardyColumnTopicsQueryResponse = {
         };
     } | null;
 };
-export type jeopardyColumnTopicsQuery = {
-    readonly response: jeopardyColumnTopicsQueryResponse;
-    readonly variables: jeopardyColumnTopicsQueryVariables;
+export type characterHomeworldQuery = {
+    readonly response: characterHomeworldQueryResponse;
+    readonly variables: characterHomeworldQueryVariables;
 };
 
 
 
 /*
-query jeopardyColumnTopicsQuery(
+query characterHomeworldQuery(
   $cursor: String
 ) {
   allPlanets(first: 5, after: $cursor) {
@@ -165,7 +165,7 @@ return {
   "kind": "Request",
   "fragment": {
     "kind": "Fragment",
-    "name": "jeopardyColumnTopicsQuery",
+    "name": "characterHomeworldQuery",
     "type": "Root",
     "metadata": null,
     "argumentDefinitions": (v0/*: any*/),
@@ -260,7 +260,7 @@ return {
   },
   "operation": {
     "kind": "Operation",
-    "name": "jeopardyColumnTopicsQuery",
+    "name": "characterHomeworldQuery",
     "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
@@ -356,12 +356,12 @@ return {
   },
   "params": {
     "operationKind": "query",
-    "name": "jeopardyColumnTopicsQuery",
+    "name": "characterHomeworldQuery",
     "id": null,
-    "text": "query jeopardyColumnTopicsQuery(\n  $cursor: String\n) {\n  allPlanets(first: 5, after: $cursor) {\n    planets {\n      id\n      name\n      terrains\n      climates\n      residentConnection(first: 1) {\n        residents {\n          gender\n          name\n          species {\n            name\n            id\n          }\n          id\n        }\n      }\n      filmConnection {\n        films {\n          title\n          id\n        }\n      }\n    }\n    pageInfo {\n      endCursor\n    }\n  }\n}\n",
+    "text": "query characterHomeworldQuery(\n  $cursor: String\n) {\n  allPlanets(first: 5, after: $cursor) {\n    planets {\n      id\n      name\n      terrains\n      climates\n      residentConnection(first: 1) {\n        residents {\n          gender\n          name\n          species {\n            name\n            id\n          }\n          id\n        }\n      }\n      filmConnection {\n        films {\n          title\n          id\n        }\n      }\n    }\n    pageInfo {\n      endCursor\n    }\n  }\n}\n",
     "metadata": {}
   }
 };
 })();
-(node as any).hash = 'e375d556aa10f0328d2d79a72306c39b';
+(node as any).hash = '77d22f5af09290254cd28d5444f7a75f';
 export default node;
