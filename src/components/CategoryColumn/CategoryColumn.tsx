@@ -176,11 +176,11 @@ class CategoryColumn extends React.PureComponent<Props, State> {
         <CategoryHeadlineCard {...headlineCard} />
         {hasTimer && this.renderCountdownInterface()}
         {cards
-          .filter(({ points }) => !completedCards.has(points))
           .map((props: CardProps) =>
             !activeCardId ? (
               <Card
                 {...props}
+                disabled={completedCards.has(props.points)}
                 key={props.points}
                 handleToggle={() => this.handleCardOpen(props.points)}
               />

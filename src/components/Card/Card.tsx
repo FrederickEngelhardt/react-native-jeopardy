@@ -3,7 +3,7 @@ import styled, { withTheme } from "styled-components";
 import { MaterialIcons } from "@expo/vector-icons";
 
 import { black, fadedBlack, grey, yellow } from "../../constants/theming";
-import {Theme} from "../RootThemeProvider";
+import { Theme } from "../RootThemeProvider";
 
 export const CardContainer = styled.View`
   padding: 12px;
@@ -18,6 +18,7 @@ const PointCardContainer = styled(CardContainer)`
 const TouchableContainer = styled.TouchableOpacity`
   width: 80%;
   align-self: center;
+  opacity: ${(props) => props.disabled ? 0.2 : 1}
 `;
 
 export const RowView = styled.View`
@@ -58,7 +59,7 @@ const DescriptionText = styled(SmallTitleText)`
 const BackText = styled(DescriptionText)`
   font-size: 16px;
   margin-bottom: 0;
-`
+`;
 
 type QuestionHint = { title: string; value: string };
 
@@ -77,6 +78,7 @@ export type CardState = null | typeof QUESTION_STATE | typeof ANSWER_STATE;
 interface Props extends CardProps {
   answersTextTitle?: string;
   cardState?: CardState;
+  disabled: boolean;
   handleToggle?: () => void;
   handleBack?: () => void;
   theme: Theme;
@@ -86,6 +88,7 @@ const Card = ({
   answers,
   answersTextTitle,
   cardState,
+  disabled,
   handleToggle,
   handleBack,
   points,
@@ -119,7 +122,11 @@ const Card = ({
             <RowView>
               <SmallTitleText>{answersTextTitle}</SmallTitleText>
               <BackButton focusable accessible onPress={handleBack}>
-                <MaterialIcons name={"arrow-back"} color={darkMode ? yellow : black} size={35} />
+                <MaterialIcons
+                  name={"arrow-back"}
+                  color={darkMode ? yellow : black}
+                  size={35}
+                />
                 <BackText>Back</BackText>
               </BackButton>
             </RowView>
@@ -134,6 +141,7 @@ const Card = ({
 
   return (
     <TouchableContainer
+      disabled={disabled}
       activeOpacity={cardState !== null ? 1 : 0.5}
       onPress={handleToggle}
     >
