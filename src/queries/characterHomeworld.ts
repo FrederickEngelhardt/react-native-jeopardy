@@ -1,21 +1,17 @@
-import { graphql } from "react-relay";
+import { graphql, fetchQuery } from "react-relay";
+import environment from "../environment";
 
-//
-// export const homePlanetsQuery = graphql`
-//     query jeopardyColumnTopicsQuery {
-//         allFilms {
-//             edges {
-//                 node {
-//                     id
-//                     title
-//                 }
-//             }
-//         }
-//     }
-// `
+export const fetchCharacterHomeWorld = async () => {
+  try {
+    const data = await fetchQuery(environment, characterHomeworldQuery, {})
+    return formatCharacterHomeworldQuery(data);
+  } catch (e) {
+    console.warn(e);
+  }
+}
 
-export const homePlanetsQuery = graphql`
-  query jeopardyColumnTopicsQuery($cursor: String) {
+export const characterHomeworldQuery = graphql`
+  query characterHomeworldQuery($cursor: String) {
     allPlanets(first: 5, after: $cursor) {
       planets {
         id
@@ -44,7 +40,7 @@ export const homePlanetsQuery = graphql`
   }
 `;
 
-export const formatHomePlanetQuery = (data: any) => {
+export const formatCharacterHomeworldQuery = (data: any) => {
   const pointsArray = [100, 200, 300, 400, 500];
 
   const cards = pointsArray.map((points: number, index: number) => {

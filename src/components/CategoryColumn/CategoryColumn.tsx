@@ -91,12 +91,14 @@ class CategoryColumn extends React.PureComponent<Props, State> {
   }
 
   componentDidUpdate(): void {
-    const { timerCount, activeCardId } = this.state;
-    const { updateUserScore } = this.props;
-    if (timerCount === 0) {
+    const { timerCount } = this.state;
+    if (timerCount <= 0) {
       clearInterval(this.timer);
-      this.state.completedCards.add(activeCardId);
-      this.setState({ hasTimer: false, timerCount: 15, activeCardId: null });
+      this.setState({
+        hasTimer: false,
+        timerCount: 15,
+      });
+      this.handleWinLossClick(false)
     }
   }
 
@@ -116,12 +118,11 @@ class CategoryColumn extends React.PureComponent<Props, State> {
   };
 
   handleBack = () => {
-    this.handleWinLossClick(false)
+    this.handleWinLossClick(false);
   };
 
   handleBuzzerClick = () => {
     clearInterval(this.timer);
-    // this.state.completedCards.add(activeCardId);
     this.setState({
       hasTimer: false,
       timerCount: 15,
@@ -137,7 +138,7 @@ class CategoryColumn extends React.PureComponent<Props, State> {
     updateUserScore(scoreModifier);
 
     this.state.completedCards.add(activeCardId);
-    this.setState({ activeCardId: null, activeCardState: null})
+    this.setState({ activeCardId: null, activeCardState: null });
   };
 
   renderWinLossInterface = () => {
@@ -175,26 +176,25 @@ class CategoryColumn extends React.PureComponent<Props, State> {
       <ColumnView>
         <CategoryHeadlineCard {...headlineCard} />
         {hasTimer && this.renderCountdownInterface()}
-        {cards
-          .map((props: CardProps) =>
-            !activeCardId ? (
+        {cards.map((props: CardProps) =>
+          !activeCardId ? (
+            <Card
+              {...props}
+              disabled={completedCards.has(props.points)}
+              key={props.points}
+              handleToggle={() => this.handleCardOpen(props.points)}
+            />
+          ) : (
+            props.points === activeCardId && (
               <Card
-                {...props}
-                disabled={completedCards.has(props.points)}
                 key={props.points}
-                handleToggle={() => this.handleCardOpen(props.points)}
+                {...props}
+                cardState={activeCardState}
+                handleBack={this.handleBack}
               />
-            ) : (
-              props.points === activeCardId && (
-                <Card
-                  key={props.points}
-                  {...props}
-                  cardState={activeCardState}
-                  handleBack={this.handleBack}
-                />
-              )
             )
-          )}
+          )
+        )}
         {activeCardState === ANSWER_STATE && this.renderWinLossInterface()}
       </ColumnView>
     );
