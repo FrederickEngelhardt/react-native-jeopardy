@@ -6,23 +6,42 @@ import Card, {
   ANSWER_STATE,
   CardProps,
   CardState,
-  QUESTION_STATE
+  QUESTION_STATE,
+  RowView
 } from "../Card/Card";
-import CategoryHeadlineCard, {Props as HeadlineCardProps} from "../CategoryHeadlineCard/CategoryHeadlineCard";
-import {updateUserScore} from "../../store/userStore";
-import {black, white} from "../../constants/theming";
+import CategoryHeadlineCard, {
+  Props as HeadlineCardProps
+} from "../CategoryHeadlineCard/CategoryHeadlineCard";
+import { updateUserScore } from "../../store/userStore";
+import { black, white } from "../../constants/theming";
 
 const ColumnView = styled.View`
   width: ${({ theme }) => theme.deviceWidth};
 `;
 
-const RowView = styled.View`
-  flex-direction: row;
-  align-self: center;
-  justify-content: space-between;
-  align-items: center;
+const TimerView = styled(RowView)`
   width: 80%;
-  margin-bottom: 12px;
+`;
+
+const WinButton = styled.TouchableHighlight`
+  height: 80px
+  flex: 1;
+  margin-right: 12px;
+  background-color: green;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+`;
+const LossButton = styled(WinButton)`
+  margin-left: 12px;
+  margin-right: 0px;
+  background-color: red;
+`;
+
+const WinLossText = styled.Text`
+  font-size: 24px;
+  font-weight: 600;
+  color: ${white};
 `;
 
 const CountText = styled.Text`
@@ -47,6 +66,9 @@ interface State {
   hasTimer: boolean;
   timerCount: number;
 }
+
+const WIN_MODIFIER = 1;
+const LOSS_MODIFIER = -0.5;
 
 class CategoryColumn extends React.PureComponent<Props, State> {
   static defaultProps = {
@@ -85,25 +107,59 @@ class CategoryColumn extends React.PureComponent<Props, State> {
   };
 
   handleCardOpen = activeCardId => {
-    this.setState({ activeCardId, activeCardState: QUESTION_STATE, hasTimer: true });
+    this.setState({
+      activeCardId,
+      activeCardState: QUESTION_STATE,
+      hasTimer: true
+    });
     this.startTimerAnimation();
   };
 
+  handleBack = () => {
+    this.handleWinLossClick(false)
+  };
+
   handleBuzzerClick = () => {
-    const { activeCardId } = this.state;
-    // updateUserScore(activeCardId);
-    clearInterval(this.timer)
+    clearInterval(this.timer);
     // this.state.completedCards.add(activeCardId);
-    this.setState({ hasTimer: false, timerCount: 15, activeCardState: ANSWER_STATE });
+    this.setState({
+      hasTimer: false,
+      timerCount: 15,
+      activeCardState: ANSWER_STATE
+    });
+  };
+
+  handleWinLossClick = (hasWon: boolean) => {
+    const { activeCardId } = this.state;
+
+    const scoreModifier =
+      activeCardId * (hasWon ? WIN_MODIFIER : LOSS_MODIFIER);
+    updateUserScore(scoreModifier);
+
+    this.state.completedCards.add(activeCardId);
+    this.setState({ activeCardId: null, activeCardState: null})
+  };
+
+  renderWinLossInterface = () => {
+    return (
+      <TimerView>
+        <WinButton onPress={() => this.handleWinLossClick(true)}>
+          <WinLossText>Win</WinLossText>
+        </WinButton>
+        <LossButton onPress={() => this.handleWinLossClick(false)}>
+          <WinLossText>Lost</WinLossText>
+        </LossButton>
+      </TimerView>
+    );
   };
 
   renderCountdownInterface = () => {
     const { timerCount } = this.state;
     return (
-      <RowView>
+      <TimerView>
         <CountText>{timerCount}</CountText>
         <Buzzer handleClick={this.handleBuzzerClick} />
-      </RowView>
+      </TimerView>
     );
   };
 
@@ -134,10 +190,12 @@ class CategoryColumn extends React.PureComponent<Props, State> {
                   key={props.points}
                   {...props}
                   cardState={activeCardState}
+                  handleBack={this.handleBack}
                 />
               )
             )
           )}
+        {activeCardState === ANSWER_STATE && this.renderWinLossInterface()}
       </ColumnView>
     );
   }

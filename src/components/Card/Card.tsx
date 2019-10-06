@@ -1,7 +1,9 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { withTheme } from "styled-components";
+import { MaterialIcons } from "@expo/vector-icons";
 
 import { black, fadedBlack, grey, yellow } from "../../constants/theming";
+import {Theme} from "../RootThemeProvider";
 
 export const CardContainer = styled.View`
   padding: 12px;
@@ -16,6 +18,21 @@ const PointCardContainer = styled(CardContainer)`
 const TouchableContainer = styled.TouchableOpacity`
   width: 80%;
   align-self: center;
+`;
+
+export const RowView = styled.View`
+  flex-direction: row;
+  align-self: center;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  width: 100%;
+`;
+
+const BackButton = styled.TouchableOpacity`
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
 `;
 
 export const TitleText = styled.Text`
@@ -38,6 +55,11 @@ const DescriptionText = styled(SmallTitleText)`
   margin-bottom: 12px;
 `;
 
+const BackText = styled(DescriptionText)`
+  font-size: 16px;
+  margin-bottom: 0;
+`
+
 type QuestionHint = { title: string; value: string };
 
 export interface CardProps {
@@ -56,16 +78,20 @@ interface Props extends CardProps {
   answersTextTitle?: string;
   cardState?: CardState;
   handleToggle?: () => void;
+  handleBack?: () => void;
+  theme: Theme;
 }
 
 const Card = ({
   answers,
   answersTextTitle,
   cardState,
-  title,
+  handleToggle,
+  handleBack,
   points,
-  questionHints,
-  handleToggle
+  title,
+  theme: { darkMode },
+  questionHints
 }: Props) => {
   const renderCardState = () => {
     switch (cardState) {
@@ -90,7 +116,13 @@ const Card = ({
       case ANSWER_STATE: {
         return (
           <>
-            <SmallTitleText>{answersTextTitle}</SmallTitleText>
+            <RowView>
+              <SmallTitleText>{answersTextTitle}</SmallTitleText>
+              <BackButton focusable accessible onPress={handleBack}>
+                <MaterialIcons name={"arrow-back"} color={darkMode ? yellow : black} size={35} />
+                <BackText>Back</BackText>
+              </BackButton>
+            </RowView>
             {answers.map(answer => (
               <DescriptionText key={answer}>{answer}</DescriptionText>
             ))}
@@ -116,4 +148,4 @@ Card.defaultProps = {
   cardState: null
 };
 
-export default Card;
+export default withTheme(Card);
