@@ -33,7 +33,7 @@ export const formatSpeciesHomeworldQuery = (data: any) => {
       homeworld
     } = data.allSpecies.species[index]
 
-    const homeworldName = homeworld ? homeworld.name : null
+    const homeworldName = homeworld ? homeworld.name : "No homeworld"
 
     return {
       points,
