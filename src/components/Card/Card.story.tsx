@@ -1,6 +1,6 @@
 import { storiesOf } from "@storybook/react-native";
 import * as React from "react";
-import { ThemeProvider } from "styled-components";
+import { ThemeProvider } from "styled-components/native";
 
 
 import Card from "./Card";

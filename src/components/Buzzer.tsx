@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled from "styled-components/native";
 
 import {black, grey, white, yellow} from "../constants/theming";
 import {TitleText} from "./Card/Card";

@@ -1,8 +1,9 @@
 import React from "react";
 import { graphql, QueryRenderer } from "react-relay";
-import { ThemeProvider } from "styled-components";
+import { ThemeProvider } from "styled-components/native";
 import { ActivityIndicator, Dimensions, Text } from "react-native";
 import environment from "../environment";
+import { rootThemeQuery } from "../queries/rootTheme";
 
 export interface Theme {
   darkMode: boolean;
@@ -33,20 +34,13 @@ const renderQuery = ({ error, props, children }) => {
   return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
 };
 
-const RootThemeProvider = (providerProps: Props) => {
-  return (
-    <QueryRenderer
-      environment={environment}
-      query={graphql`
-        query RootThemeProviderQuery {
-          theme {
-            darkMode
-          }
-          __typename
-        }
-      `}
-      render={renderProps => renderQuery({ ...renderProps, ...providerProps })}
-    />
-  );
-};
+const RootThemeProvider = (providerProps: Props) => (
+  <QueryRenderer
+    environment={environment}
+    query={rootThemeQuery}
+    render={renderProps => renderQuery({ ...renderProps, ...providerProps })}
+    variables={{}}
+  />
+);
+
 export default RootThemeProvider;

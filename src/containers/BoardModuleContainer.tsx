@@ -5,13 +5,14 @@ import { Theme } from "../components/RootThemeProvider";
 import BoardModule from "../components/BoardModule/BoardModule";
 import { fetchCharacterHomeWorld } from "../queries/characterHomeworld";
 import { fetchSpeciesHomeworld } from "../queries/speciesHomeworld";
+import { Props as CategoryColumnProps } from "../components/CategoryColumn/CategoryColumn";
 
 interface Props {
   theme: Theme;
 }
 
 interface State {
-  data: [any];
+  data: Array<CategoryColumnProps>
 }
 
 const queries = [fetchCharacterHomeWorld, fetchSpeciesHomeworld]
@@ -28,6 +29,9 @@ class BoardModuleContainer extends PureComponent<Props> {
   fetchAll = () => {
     queries.forEach( async (query) => {
       const data = await query()
+      if (!data){
+        return
+      }
       this.setState((state: State) => ({
         data: [...state.data, data]
       }));

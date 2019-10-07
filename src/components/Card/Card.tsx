@@ -1,5 +1,5 @@
 import React from "react";
-import styled, { withTheme } from "styled-components";
+import styled, { withTheme } from "styled-components/native";
 import { MaterialIcons } from "@expo/vector-icons";
 
 import { black, fadedBlack, grey, yellow } from "../../constants/theming";

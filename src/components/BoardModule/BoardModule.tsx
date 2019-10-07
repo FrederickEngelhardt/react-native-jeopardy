@@ -1,10 +1,14 @@
 import React from "react";
-import styled, { withTheme } from "styled-components";
-import CategoryColumn, { Props as CategoryColumnProps } from "../CategoryColumn/CategoryColumn";
-import {Theme} from "../RootThemeProvider";
+import styled, { withTheme } from "styled-components/native";
+import CategoryColumn, {
+  Props as CategoryColumnProps
+} from "../CategoryColumn/CategoryColumn";
+import { Theme } from "../RootThemeProvider";
+import {darkGrey} from "../../constants/theming";
 
 const CategoryScrollView = styled.ScrollView`
-`
+  background-color: ${darkGrey}
+`;
 
 interface Props {
   categoryColumns: [CategoryColumnProps];
@@ -18,17 +22,16 @@ interface State {
 class BoardModule extends React.PureComponent<Props, State> {
   state = {
     activeCardId: null
-  }
+  };
   render() {
     const { categoryColumns, theme } = this.props;
 
-    const generateSnapOffsets = categoryColumns.map((ele, index: number) => (index * theme.deviceWidth))
+    const generateSnapOffsets = categoryColumns.map(
+      (ele, index: number) => index * theme.deviceWidth
+    );
     return (
-      <CategoryScrollView
-        horizontal
-        snapToOffsets={generateSnapOffsets}
-      >
-        {categoryColumns.map((column) => (
+      <CategoryScrollView horizontal snapToOffsets={generateSnapOffsets}>
+        {categoryColumns.map(column => (
           <CategoryColumn key={column.headlineCard.title} {...column} />
         ))}
       </CategoryScrollView>
