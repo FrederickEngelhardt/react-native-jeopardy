@@ -1,7 +1,7 @@
-const testProps = {
-  titleText: 'SWAPI',
-  scoreText: 'score',
-  score: 0,
-}
+const navbarProps = {
+  titleText: "SWAPI",
+  scoreText: "score",
+  user: { score: 0 }
+};
 
-export default testProps
+export default navbarProps;

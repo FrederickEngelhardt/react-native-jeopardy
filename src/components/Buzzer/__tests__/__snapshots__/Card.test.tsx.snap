@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Buzzer /> renders correctly 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "#fff",
+          "borderRadius": 25,
+          "height": 85,
+          "justifyContent": "center",
+          "width": 85,
+        },
+      ]
+    }
+  >
+    <TouchableHighlight
+      activeOpacity={0.85}
+      delayPressOut={100}
+      style={
+        Array [
+          Object {
+            "backgroundColor": "#d1d1d1",
+            "borderColor": "black",
+            "borderRadius": 50,
+            "borderWidth": 3,
+            "height": 75,
+            "justifyContent": "center",
+            "width": 75,
+          },
+        ]
+      }
+      underlayColor="#000"
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#000",
+              "fontSize": 18,
+              "fontWeight": "600",
+              "textAlign": "center",
+            },
+          ]
+        }
+      >
+        Buzzer
+      </Text>
+    </TouchableHighlight>
+  </View>
+</View>
+`;

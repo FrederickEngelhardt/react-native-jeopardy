@@ -66,7 +66,7 @@ type QuestionHint = { title: string; value: string };
 export interface CardProps {
   answers: Array<string>;
   points: number;
-  title: string;
+  title?: string;
   questionHints: Array<QuestionHint>;
 }
 

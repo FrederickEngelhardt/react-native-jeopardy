@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components/native";
 
-import Buzzer from "../Buzzer";
+import Buzzer from "../Buzzer/Buzzer";
 import Card, {
   ANSWER_STATE,
   CardProps,
@@ -10,10 +10,11 @@ import Card, {
   RowView
 } from "../Card/Card";
 import CategoryHeadlineCard, {
-  Props as HeadlineCardProps
+  Props as HeadlineCard
 } from "../CategoryHeadlineCard/CategoryHeadlineCard";
 import { updateUserScore } from "../../store/userStore";
 import { black, white } from "../../constants/theming";
+import {Theme} from "../RootThemeProvider";
 
 const ColumnView = styled.View`
   width: ${({ theme }) => theme.deviceWidth};
@@ -49,14 +50,14 @@ const CountText = styled.Text`
   font-size: 64px;
   font-weight: 900;
   color: ${({ theme }) => (theme.darkMode ? white : black)};
-  // margin: 12px;
   padding: 12px;
 `;
 
 export interface Props {
-  readonly cards: [CardProps];
-  headlineCard: HeadlineCardProps;
-  updateUserScore(number): void;
+  theme?: Theme;
+  cards: [CardProps];
+  headlineCard: HeadlineCard;
+  updateScore?: (number) => void;
 }
 
 interface State {
@@ -72,8 +73,9 @@ const LOSS_MODIFIER = -0.5;
 
 class CategoryColumn extends React.PureComponent<Props, State> {
   static defaultProps = {
-    updateUserScore
+    updateScore: updateUserScore
   };
+
   state: State = {
     activeCardId: null,
     activeCardState: null,
@@ -132,10 +134,11 @@ class CategoryColumn extends React.PureComponent<Props, State> {
 
   handleWinLossClick = (hasWon: boolean) => {
     const { activeCardId } = this.state;
+    const { updateScore } = this.props;
 
     const scoreModifier =
       activeCardId * (hasWon ? WIN_MODIFIER : LOSS_MODIFIER);
-    updateUserScore(scoreModifier);
+    updateScore(scoreModifier);
 
     this.state.completedCards.add(activeCardId);
     this.setState({ activeCardId: null, activeCardState: null });

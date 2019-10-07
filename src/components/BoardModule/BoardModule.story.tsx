@@ -5,6 +5,6 @@ import BoardModule from "./BoardModule";
 import boardModuleProps from "./BoardModule.props";
 import { withKnobs } from "@storybook/addon-knobs";
 
-storiesOf("BoardModule", module)
+storiesOf("<BoardModule />", module)
   .addDecorator(withKnobs)
   .add("default", () => <BoardModule {...boardModuleProps} />);

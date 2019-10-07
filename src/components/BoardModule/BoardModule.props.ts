@@ -7,7 +7,7 @@ const column2 = {
 }
 
 const boardModuleProps = {
-  categoryColumns: [{...categoryColumnProps, updateUserScore: () => {}}, column2]
+  categoryColumns: [{...categoryColumnProps, updateScore: () => {}}, column2]
 };
 
 export default boardModuleProps;

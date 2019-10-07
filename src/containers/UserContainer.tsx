@@ -35,6 +35,7 @@ const UserContainer = (providerProps: Props) => {
         }
       `}
       render={renderProps => renderQuery({ ...renderProps, ...providerProps })}
+      variables={{}}
     />
   );
 };

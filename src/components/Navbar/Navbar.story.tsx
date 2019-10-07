@@ -6,7 +6,7 @@ import { text, number, withKnobs } from "@storybook/addon-knobs";
 import Navbar from "./Navbar";
 import navbarProps from "./Navbar.props";
 
-storiesOf("Navbar", module)
+storiesOf("<Navbar />", module)
   .addDecorator(withKnobs)
   .add("default", () => (
     <Navbar

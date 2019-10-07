@@ -1,8 +1,9 @@
 import React from "react";
 import styled from "styled-components/native";
 
-import {black, grey, white, yellow} from "../constants/theming";
-import {TitleText} from "./Card/Card";
+import { black, grey, white, yellow } from "../../constants/theming";
+import { TitleText } from "../Card/Card";
+import {Theme} from "../RootThemeProvider";
 
 const BuzzerBox = styled.View`
   background-color: ${({ theme }) => (theme.darkMode ? yellow : white)};
@@ -10,11 +11,9 @@ const BuzzerBox = styled.View`
   height: 85;
   align-items: center;
   justify-content: center;
-  // border-radius: 5px;
-  //   border-width: 3px;
   border-radius: 25px;
-`
-const BuzzerButton = styled.TouchableHighlight.attrs( props => ({
+`;
+const BuzzerButton = styled.TouchableHighlight.attrs(props => ({
   underlayColor: black
 }))`
   background-color: ${({ theme }) => (theme.darkMode ? white : grey)};
@@ -32,16 +31,17 @@ const BuzzerText = styled(TitleText)`
 `;
 
 interface Props {
-  title?: string;
   handleClick?: () => void;
+  theme?: Theme;
+  title?: string;
 }
 
 const Buzzer = ({ title, handleClick }: Props) => {
   return (
     <BuzzerBox>
-    <BuzzerButton onPress={handleClick}>
-      <BuzzerText>{title}</BuzzerText>
-    </BuzzerButton>
+      <BuzzerButton onPress={handleClick}>
+        <BuzzerText>{title}</BuzzerText>
+      </BuzzerButton>
     </BuzzerBox>
   );
 };

@@ -1,0 +1,274 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CategoryColumn /> renders correctly 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  // @ts-ignore
+  <View
+    style={
+      Array [
+        Object {
+          "width": 320,
+        },
+      ]
+    }
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "backgroundColor": "rgba(0,0,0,.8)",
+            "marginBottom": 12,
+            "paddingBottom": 12,
+            "paddingLeft": 12,
+            "paddingRight": 12,
+            "paddingTop": 12,
+          },
+        ]
+      }
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#ffe81f",
+              "fontSize": 48,
+              "fontWeight": "900",
+              "textAlign": "center",
+            },
+          ]
+        }
+      >
+        Apprentices
+      </Text>
+    </View>
+    <TouchableOpacity
+      activeOpacity={0.5}
+      disabled={false}
+      style={
+        Array [
+          Object {
+            "alignSelf": "center",
+            "opacity": 1,
+            "width": "80%",
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "backgroundColor": "rgba(0,0,0,.8)",
+              "borderRadius": 5,
+              "marginBottom": 12,
+              "paddingBottom": 12,
+              "paddingLeft": 12,
+              "paddingRight": 12,
+              "paddingTop": 12,
+            },
+          ]
+        }
+      >
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#ffe81f",
+                "fontSize": 38,
+                "fontWeight": "600",
+                "textAlign": "center",
+              },
+            ]
+          }
+        >
+          100
+        </Text>
+      </View>
+    </TouchableOpacity>
+    <TouchableOpacity
+      activeOpacity={0.5}
+      disabled={false}
+      style={
+        Array [
+          Object {
+            "alignSelf": "center",
+            "opacity": 1,
+            "width": "80%",
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "backgroundColor": "rgba(0,0,0,.8)",
+              "borderRadius": 5,
+              "marginBottom": 12,
+              "paddingBottom": 12,
+              "paddingLeft": 12,
+              "paddingRight": 12,
+              "paddingTop": 12,
+            },
+          ]
+        }
+      >
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#ffe81f",
+                "fontSize": 38,
+                "fontWeight": "600",
+                "textAlign": "center",
+              },
+            ]
+          }
+        >
+          200
+        </Text>
+      </View>
+    </TouchableOpacity>
+    <TouchableOpacity
+      activeOpacity={0.5}
+      disabled={false}
+      style={
+        Array [
+          Object {
+            "alignSelf": "center",
+            "opacity": 1,
+            "width": "80%",
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "backgroundColor": "rgba(0,0,0,.8)",
+              "borderRadius": 5,
+              "marginBottom": 12,
+              "paddingBottom": 12,
+              "paddingLeft": 12,
+              "paddingRight": 12,
+              "paddingTop": 12,
+            },
+          ]
+        }
+      >
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#ffe81f",
+                "fontSize": 38,
+                "fontWeight": "600",
+                "textAlign": "center",
+              },
+            ]
+          }
+        >
+          300
+        </Text>
+      </View>
+    </TouchableOpacity>
+    <TouchableOpacity
+      activeOpacity={0.5}
+      disabled={false}
+      style={
+        Array [
+          Object {
+            "alignSelf": "center",
+            "opacity": 1,
+            "width": "80%",
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "backgroundColor": "rgba(0,0,0,.8)",
+              "borderRadius": 5,
+              "marginBottom": 12,
+              "paddingBottom": 12,
+              "paddingLeft": 12,
+              "paddingRight": 12,
+              "paddingTop": 12,
+            },
+          ]
+        }
+      >
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#ffe81f",
+                "fontSize": 38,
+                "fontWeight": "600",
+                "textAlign": "center",
+              },
+            ]
+          }
+        >
+          400
+        </Text>
+      </View>
+    </TouchableOpacity>
+    <TouchableOpacity
+      activeOpacity={0.5}
+      disabled={false}
+      style={
+        Array [
+          Object {
+            "alignSelf": "center",
+            "opacity": 1,
+            "width": "80%",
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "backgroundColor": "rgba(0,0,0,.8)",
+              "borderRadius": 5,
+              "marginBottom": 12,
+              "paddingBottom": 12,
+              "paddingLeft": 12,
+              "paddingRight": 12,
+              "paddingTop": 12,
+            },
+          ]
+        }
+      >
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#ffe81f",
+                "fontSize": 38,
+                "fontWeight": "600",
+                "textAlign": "center",
+              },
+            ]
+          }
+        >
+          500
+        </Text>
+      </View>
+    </TouchableOpacity>
+  </View>
+</View>
+`;

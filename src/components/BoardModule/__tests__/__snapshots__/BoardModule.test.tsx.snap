@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`test renders correctly 1`] = `
+exports[`<BoardModule /> renders correctly 1`] = `
 <View
   collapsable={true}
   pointerEvents="box-none"
@@ -20,7 +20,9 @@ exports[`test renders correctly 1`] = `
     }
     style={
       Array [
-        Object {},
+        Object {
+          "backgroundColor": "#494949",
+        },
       ]
     }
   >

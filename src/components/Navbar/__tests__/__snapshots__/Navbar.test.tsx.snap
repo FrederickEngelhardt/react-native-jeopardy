@@ -1,0 +1,99 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Navbar /> renders correctly 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "#000",
+          "flexDirection": "row",
+          "height": 80,
+          "justifyContent": "space-between",
+          "paddingLeft": 12,
+          "paddingRight": 12,
+          "paddingTop": 12,
+          "width": 320,
+        },
+      ]
+    }
+  >
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#fff",
+            "fontSize": 28,
+            "fontWeight": "900",
+          },
+        ]
+      }
+    >
+      SWAPI
+    </Text>
+    <View
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "center",
+          },
+        ]
+      }
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#fff",
+              "fontSize": 18,
+              "fontWeight": "900",
+              "marginRight": 12,
+            },
+          ]
+        }
+      >
+        score
+      </Text>
+      <Text
+        style={
+          Object {
+            "color": "#fff",
+            "fontSize": 24,
+            "fontWeight": "900",
+          }
+        }
+      >
+        0
+      </Text>
+    </View>
+    <Switch
+      style={
+        Array [
+          Object {
+            "width": 50,
+          },
+        ]
+      }
+      thumbColor="#000"
+      trackColor={
+        Object {
+          "false": "#fff",
+          "true": "#fff",
+        }
+      }
+      value={true}
+    />
+  </View>
+</View>
+`;

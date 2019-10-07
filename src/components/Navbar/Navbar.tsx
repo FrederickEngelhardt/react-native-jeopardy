@@ -65,7 +65,6 @@ const NavBar = (props: Props) => {
     scoreText,
     theme: { darkMode },
     titleText,
-    toggleDarkMode
   } = props;
 
   const animatedScoreValue = new Animated.Value(0);
@@ -104,7 +103,7 @@ const NavBar = (props: Props) => {
         </Animated.Text>
       </ScoreContainer>
       <DarkLightSwitch
-        onChange={() => toggleDarkMode(darkMode)}
+        onChange={() => props.toggleDarkMode(darkMode)}
         value={darkMode}
       />
     </NavBarContainer>

@@ -2,20 +2,23 @@ import React from "react";
 import { render } from "@testing-library/react-native";
 import { ThemeProvider } from "styled-components/native";
 
-import BoardModule from "../BoardModule";
-import boardModuleProps from "../BoardModule.props";
+import CategoryColumn from "../CategoryColumn";
+import categoryColumnProps from "../CategoryColumn.props";
 
 const theme = {
   darkMode: true,
   deviceHeight: 800,
-  deviceWidth: 320,
+  deviceWidth: 320
 };
 
-describe("<BoardModule />", () => {
+const mockUpdateUserScore = jest.fn()
+
+describe("<CategoryColumn />", () => {
   it("renders correctly", () => {
     const { container } = render(
-      <ThemeProvider theme={theme} >
-      <BoardModule {...boardModuleProps}/>
+      <ThemeProvider theme={theme}>
+        // @ts-ignore
+        <CategoryColumn {...categoryColumnProps} updateScore={mockUpdateUserScore} />
       </ThemeProvider>
     );
     expect(container).toMatchSnapshot();

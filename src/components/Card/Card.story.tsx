@@ -14,7 +14,7 @@ import {
 } from "@storybook/addon-knobs";
 import {action} from "@storybook/addon-actions";
 
-storiesOf("Card", module)
+storiesOf("<Card />", module)
   .addDecorator(withKnobs)
   .add("default", () => (
     <Card
