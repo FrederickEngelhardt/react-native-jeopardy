@@ -3,7 +3,7 @@ import styled from "styled-components/native";
 
 import { black, grey, white, yellow } from "../../constants/theming";
 import { TitleText } from "../Card/Card";
-import { Theme } from "../RootThemeProvider";
+import { Theme } from "../../containers/RootThemeProvider";
 
 const BuzzerBox = styled.View`
   background-color: ${({ theme }) => (theme.darkMode ? yellow : white)};

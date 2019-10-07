@@ -3,7 +3,7 @@ import styled, { withTheme } from "styled-components/native";
 
 import NavBar from "../components/Navbar/Navbar";
 import BoardModuleContainer from "../containers/BoardModuleContainer";
-import { Theme } from "../components/RootThemeProvider";
+import { Theme } from "../containers/RootThemeProvider";
 import { ScrollView, StatusBar } from "react-native";
 import UserContainer from "../containers/UserContainer";
 import { darkGrey, lightBlue } from "../constants/theming";

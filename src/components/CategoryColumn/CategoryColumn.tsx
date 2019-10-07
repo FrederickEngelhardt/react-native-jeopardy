@@ -14,7 +14,7 @@ import CategoryHeadlineCard, {
 } from "../CategoryHeadlineCard/CategoryHeadlineCard";
 import { updateUserScore } from "../../store/userStore";
 import { black, white } from "../../constants/theming";
-import { Theme } from "../RootThemeProvider";
+import { Theme } from "../../containers/RootThemeProvider";
 
 const ColumnView = styled.View`
   width: ${({ theme }) => theme.deviceWidth};

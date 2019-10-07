@@ -3,7 +3,7 @@ import styled, { withTheme } from "styled-components/native";
 import { MaterialIcons } from "@expo/vector-icons";
 
 import { black, fadedBlack, grey, yellow } from "../../constants/theming";
-import { Theme } from "../RootThemeProvider";
+import { Theme } from "../../containers/RootThemeProvider";
 
 export const CardContainer = styled.View`
   padding: 12px;
