@@ -13,6 +13,6 @@ storiesOf("<Navbar />", module)
       {...navbarProps}
       toggleDarkMode={action("toggled Dark Mode")}
       title={text("Title", navbarProps.titleText)}
-      user={{ score: number("score", navbarProps.score) }}
+      user={{ score: number("score", navbarProps.user.score) }}
     />
   ));
