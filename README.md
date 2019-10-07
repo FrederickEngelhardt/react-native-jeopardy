@@ -18,7 +18,6 @@ Inside of the root [App.tsx](./App.tsx) you can enable storybook by setting the 
 
 Why Storybook:
 - Storybook is a great way to rapidly prototype UI components.
-- Storybook is enabled by default and will 
 - See the [storybook-docs](https://storybook.js.org/docs/basics/introduction/) for more information
 
 ## React Relay
