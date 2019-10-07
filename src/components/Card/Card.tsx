@@ -154,7 +154,6 @@ const Card = ({
 
 Card.defaultProps = {
   answersTextTitle: "Answers",
-  isOpened: false,
   cardState: null
 };
 

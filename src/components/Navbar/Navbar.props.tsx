@@ -1,5 +1,5 @@
 const navbarProps = {
-  titleText: "SWAPI",
+  titleText: "SWAPI-J",
   scoreText: "score",
   user: { score: 0 }
 };

@@ -2,17 +2,10 @@ import { storiesOf } from "@storybook/react-native";
 import * as React from "react";
 import { ThemeProvider } from "styled-components/native";
 
-
-import Card from "./Card";
+import Card, { ANSWER_STATE, QUESTION_STATE } from "./Card";
 import cardProps from "./Card.props";
-import {
-  boolean,
-  number,
-  select,
-  text,
-  withKnobs
-} from "@storybook/addon-knobs";
-import {action} from "@storybook/addon-actions";
+import { number, select, text, withKnobs } from "@storybook/addon-knobs";
+import { action } from "@storybook/addon-actions";
 
 storiesOf("<Card />", module)
   .addDecorator(withKnobs)
@@ -20,8 +13,12 @@ storiesOf("<Card />", module)
     <Card
       {...cardProps}
       title={text("Title Text", cardProps.title)}
-      isOpened={boolean("Toggle Card Opened", cardProps.isOpened)}
+      cardState={select(
+        "Toggle Card Opened",
+        { points: null, question: QUESTION_STATE, answer: ANSWER_STATE },
+        null
+      )}
       points={number("Card Points", cardProps.points)}
-      handleToggle={action('called toggleCard action')}
+      handleToggle={action("called toggleCard action")}
     />
   ));
