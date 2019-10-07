@@ -12,8 +12,13 @@
 ### Storybook: 
 Inside of the root [App.tsx](./App.tsx) you can enable storybook by setting the const to `storybook = true`
 
+[StorybookToggleComponent](./src/storybook/StorybookToggleComponent.tsx)
+- This component intercepts user touches.
+- Allows for swapping between Storybook and the Main app by clicking the screen with **3 or more fingers/touches**
+
 Why Storybook:
 - Storybook is a great way to rapidly prototype UI components.
+- Storybook is enabled by default and will 
 - See the [storybook-docs](https://storybook.js.org/docs/basics/introduction/) for more information
 
 ## React Relay
