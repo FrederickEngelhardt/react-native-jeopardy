@@ -3,7 +3,7 @@ import styled from "styled-components/native";
 
 import { black, grey, white, yellow } from "../../constants/theming";
 import { TitleText } from "../Card/Card";
-import {Theme} from "../RootThemeProvider";
+import { Theme } from "../RootThemeProvider";
 
 const BuzzerBox = styled.View`
   background-color: ${({ theme }) => (theme.darkMode ? yellow : white)};
@@ -39,7 +39,11 @@ interface Props {
 const Buzzer = ({ title, handleClick }: Props) => {
   return (
     <BuzzerBox>
-      <BuzzerButton onPress={handleClick}>
+      <BuzzerButton
+        accessible
+        acessibilityLabel="Jeopardy Buzzer"
+        onPress={handleClick}
+      >
         <BuzzerText>{title}</BuzzerText>
       </BuzzerButton>
     </BuzzerBox>

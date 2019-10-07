@@ -14,7 +14,7 @@ import CategoryHeadlineCard, {
 } from "../CategoryHeadlineCard/CategoryHeadlineCard";
 import { updateUserScore } from "../../store/userStore";
 import { black, white } from "../../constants/theming";
-import {Theme} from "../RootThemeProvider";
+import { Theme } from "../RootThemeProvider";
 
 const ColumnView = styled.View`
   width: ${({ theme }) => theme.deviceWidth};
@@ -98,9 +98,9 @@ class CategoryColumn extends React.PureComponent<Props, State> {
       clearInterval(this.timer);
       this.setState({
         hasTimer: false,
-        timerCount: 15,
+        timerCount: 15
       });
-      this.handleWinLossClick(false)
+      this.handleWinLossClick(false);
     }
   }
 
@@ -147,10 +147,18 @@ class CategoryColumn extends React.PureComponent<Props, State> {
   renderWinLossInterface = () => {
     return (
       <TimerView>
-        <WinButton onPress={() => this.handleWinLossClick(true)}>
+        <WinButton
+          accessible
+          accessibilityLabel="Click if you won"
+          onPress={() => this.handleWinLossClick(true)}
+        >
           <WinLossText>Win</WinLossText>
         </WinButton>
-        <LossButton onPress={() => this.handleWinLossClick(false)}>
+        <LossButton
+          accessible
+          accessibilityLabel="Click if you lost"
+          onPress={() => this.handleWinLossClick(false)}
+        >
           <WinLossText>Lost</WinLossText>
         </LossButton>
       </TimerView>

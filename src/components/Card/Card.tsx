@@ -18,7 +18,7 @@ const PointCardContainer = styled(CardContainer)`
 const TouchableContainer = styled.TouchableOpacity`
   width: 80%;
   align-self: center;
-  opacity: ${(props) => props.disabled ? 0.2 : 1}
+  opacity: ${props => (props.disabled ? 0.2 : 1)};
 `;
 
 export const RowView = styled.View`
@@ -121,7 +121,7 @@ const Card = ({
           <>
             <RowView>
               <SmallTitleText>{answersTextTitle}</SmallTitleText>
-              <BackButton focusable accessible onPress={handleBack}>
+              <BackButton accessible onPress={handleBack}>
                 <MaterialIcons
                   name={"arrow-back"}
                   color={darkMode ? yellow : black}
@@ -141,6 +141,8 @@ const Card = ({
 
   return (
     <TouchableContainer
+      accessible
+      accessibilityLabel="Jeopardy Topic Card"
       disabled={disabled}
       activeOpacity={cardState !== null ? 1 : 0.5}
       onPress={handleToggle}
