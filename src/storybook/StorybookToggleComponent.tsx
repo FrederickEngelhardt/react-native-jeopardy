@@ -56,6 +56,10 @@ class StorybookToggleComponent extends React.Component<{}, State> {
     }
   }
 
+  componentWillUnmount(): void {
+    clearTimeout(this.timer)
+  }
+
   generateStores = () => {
     // Due to swapping storybook we need to regenerate the relay user and theme stores
     generateThemeStore();
