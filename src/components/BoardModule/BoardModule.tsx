@@ -4,11 +4,8 @@ import CategoryColumn, {
   Props as CategoryColumnProps
 } from "../CategoryColumn/CategoryColumn";
 import { Theme } from "../RootThemeProvider";
-import {darkGrey} from "../../constants/theming";
 
-const CategoryScrollView = styled.ScrollView`
-  background-color: ${darkGrey}
-`;
+const CategoryScrollView = styled.ScrollView``;
 
 interface Props {
   categoryColumns: [CategoryColumnProps];

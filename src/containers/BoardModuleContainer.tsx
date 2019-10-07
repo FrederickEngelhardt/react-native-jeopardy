@@ -1,14 +1,14 @@
-import React, { PureComponent } from "react";
-import { ActivityIndicator } from "react-native";
+import React from "react";
 
 import { Theme } from "../components/RootThemeProvider";
 import BoardModule from "../components/BoardModule/BoardModule";
 import { fetchCharacterHomeWorld } from "../queries/characterHomeworld";
 import { fetchSpeciesHomeworld } from "../queries/speciesHomeworld";
 import { Props as CategoryColumnProps } from "../components/CategoryColumn/CategoryColumn";
+import {FullScreenLoader} from "./UserContainer";
 
 interface Props {
-  theme: Theme;
+  theme?: Theme;
 }
 
 interface State {
@@ -17,7 +17,7 @@ interface State {
 
 const queries = [fetchCharacterHomeWorld, fetchSpeciesHomeworld]
 
-class BoardModuleContainer extends PureComponent<Props> {
+class BoardModuleContainer extends React.PureComponent<Props> {
   state = {
     data: []
   };
@@ -44,7 +44,7 @@ class BoardModuleContainer extends PureComponent<Props> {
     return data.length > 0 ? (
       <BoardModule categoryColumns={data} />
     ) : (
-      <ActivityIndicator />
+      <FullScreenLoader />
     );
   }
 }
