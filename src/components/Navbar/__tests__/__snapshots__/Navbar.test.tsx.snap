@@ -38,7 +38,7 @@ exports[`<Navbar /> renders correctly 1`] = `
         ]
       }
     >
-      SWAPI
+      SWAPI-J
     </Text>
     <View
       style={

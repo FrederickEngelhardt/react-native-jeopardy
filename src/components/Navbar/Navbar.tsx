@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import styled, { withTheme } from "styled-components/native";
 import { Animated, StyleSheet } from "react-native";
 
-import { Theme } from "../RootThemeProvider";
+import { Theme } from "../../containers/RootThemeProvider";
 import { toggleDarkMode } from "../../store/themeStore";
 import { black, lightBlue, white, yellow } from "../../constants/theming";
 

@@ -28,7 +28,7 @@ addDecorator(storyFn => (
       style={{
         flex: 1,
         backgroundColor: select(
-          "blah",
+          "BackgroundColors",
           { darkTheme: darkGrey, lightTheme: lightBlue },
           darkGrey
         )

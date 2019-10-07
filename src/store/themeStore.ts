@@ -1,6 +1,5 @@
-import { commitLocalUpdate, graphql } from "react-relay";
+import { commitLocalUpdate } from "react-relay";
 import environment from "../environment";
-import { GraphQLScalarType } from "graphql/type";
 
 export const THEME_ID = "theme";
 export const DARK_MODE = "darkMode";

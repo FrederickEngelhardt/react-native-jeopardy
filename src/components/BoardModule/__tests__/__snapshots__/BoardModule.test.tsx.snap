@@ -20,9 +20,7 @@ exports[`<BoardModule /> renders correctly 1`] = `
     }
     style={
       Array [
-        Object {
-          "backgroundColor": "#494949",
-        },
+        Object {},
       ]
     }
   >
@@ -65,6 +63,8 @@ exports[`<BoardModule /> renders correctly 1`] = `
         </Text>
       </View>
       <TouchableOpacity
+        accessibilityLabel="Jeopardy Topic Card"
+        accessible={true}
         activeOpacity={0.5}
         disabled={false}
         style={
@@ -109,6 +109,8 @@ exports[`<BoardModule /> renders correctly 1`] = `
         </View>
       </TouchableOpacity>
       <TouchableOpacity
+        accessibilityLabel="Jeopardy Topic Card"
+        accessible={true}
         activeOpacity={0.5}
         disabled={false}
         style={
@@ -153,6 +155,8 @@ exports[`<BoardModule /> renders correctly 1`] = `
         </View>
       </TouchableOpacity>
       <TouchableOpacity
+        accessibilityLabel="Jeopardy Topic Card"
+        accessible={true}
         activeOpacity={0.5}
         disabled={false}
         style={
@@ -197,6 +201,8 @@ exports[`<BoardModule /> renders correctly 1`] = `
         </View>
       </TouchableOpacity>
       <TouchableOpacity
+        accessibilityLabel="Jeopardy Topic Card"
+        accessible={true}
         activeOpacity={0.5}
         disabled={false}
         style={
@@ -241,6 +247,8 @@ exports[`<BoardModule /> renders correctly 1`] = `
         </View>
       </TouchableOpacity>
       <TouchableOpacity
+        accessibilityLabel="Jeopardy Topic Card"
+        accessible={true}
         activeOpacity={0.5}
         disabled={false}
         style={
@@ -324,6 +332,8 @@ exports[`<BoardModule /> renders correctly 1`] = `
         </Text>
       </View>
       <TouchableOpacity
+        accessibilityLabel="Jeopardy Topic Card"
+        accessible={true}
         activeOpacity={0.5}
         disabled={false}
         style={
@@ -368,6 +378,8 @@ exports[`<BoardModule /> renders correctly 1`] = `
         </View>
       </TouchableOpacity>
       <TouchableOpacity
+        accessibilityLabel="Jeopardy Topic Card"
+        accessible={true}
         activeOpacity={0.5}
         disabled={false}
         style={
@@ -412,6 +424,8 @@ exports[`<BoardModule /> renders correctly 1`] = `
         </View>
       </TouchableOpacity>
       <TouchableOpacity
+        accessibilityLabel="Jeopardy Topic Card"
+        accessible={true}
         activeOpacity={0.5}
         disabled={false}
         style={
@@ -456,6 +470,8 @@ exports[`<BoardModule /> renders correctly 1`] = `
         </View>
       </TouchableOpacity>
       <TouchableOpacity
+        accessibilityLabel="Jeopardy Topic Card"
+        accessible={true}
         activeOpacity={0.5}
         disabled={false}
         style={
@@ -500,6 +516,8 @@ exports[`<BoardModule /> renders correctly 1`] = `
         </View>
       </TouchableOpacity>
       <TouchableOpacity
+        accessibilityLabel="Jeopardy Topic Card"
+        accessible={true}
         activeOpacity={0.5}
         disabled={false}
         style={

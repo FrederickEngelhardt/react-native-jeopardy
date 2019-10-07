@@ -1,5 +1,5 @@
 import React from "react";
-import { graphql, QueryRenderer } from "react-relay";
+import { QueryRenderer } from "react-relay";
 import { ThemeProvider } from "styled-components/native";
 import { ActivityIndicator, Dimensions, Text } from "react-native";
 import environment from "../environment";

@@ -3,7 +3,7 @@ import styled, { withTheme } from "styled-components/native";
 import CategoryColumn, {
   Props as CategoryColumnProps
 } from "../CategoryColumn/CategoryColumn";
-import { Theme } from "../RootThemeProvider";
+import { Theme } from "../../containers/RootThemeProvider";
 
 const CategoryScrollView = styled.ScrollView``;
 

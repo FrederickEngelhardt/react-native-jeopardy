@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Theme } from "../components/RootThemeProvider";
+import { Theme } from "./RootThemeProvider";
 import BoardModule from "../components/BoardModule/BoardModule";
 import { fetchCharacterHomeWorld } from "../queries/characterHomeworld";
 import { fetchSpeciesHomeworld } from "../queries/speciesHomeworld";

@@ -25,6 +25,8 @@ exports[`<Buzzer /> renders correctly 1`] = `
     }
   >
     <TouchableHighlight
+      accessible={true}
+      acessibilityLabel="Jeopardy Buzzer"
       activeOpacity={0.85}
       delayPressOut={100}
       style={

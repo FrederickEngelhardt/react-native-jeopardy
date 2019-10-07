@@ -1,9 +1,11 @@
 import React from "react";
 import styled from "styled-components/native";
-import { graphql, QueryRenderer } from "react-relay";
+import { QueryRenderer } from "react-relay";
 import { Text } from "react-native";
+
 import environment from "../environment";
 import { darkGrey, lightBlue } from "../constants/theming";
+import { userQuery } from "../queries/user";
 
 interface Props {
   children: React.ReactNode;
@@ -19,7 +21,7 @@ const renderQuery = ({ error, props, children }) => {
     return <Text>Failed to load</Text>;
   }
   if (!props) {
-    return <FullScreenLoader style={{ flex: 1 }} />;
+    return <FullScreenLoader />;
   }
 
   return React.cloneElement(children, props);
@@ -32,15 +34,7 @@ const UserContainer = (providerProps: Props) => {
   return (
     <QueryRenderer
       environment={environment}
-      query={graphql`
-        query UserContainerQuery {
-          user {
-            name
-            score
-          }
-          __typename
-        }
-      `}
+      query={userQuery}
       render={renderProps => renderQuery({ ...renderProps, ...providerProps })}
       variables={{}}
     />

@@ -2,9 +2,9 @@ import { generateThemeStore } from "./src/store/themeStore";
 import { generateUserStore } from "./src/store/userStore";
 
 import RootScreen from "./src/screens/RootScreen";
-import storybookEntry from "./src/storybook/entry";
+import StorybookToggleComponent from "./src/storybook/StorybookToggleComponent";
 
-const storybook = false;
+const storybook = true;
 
 if (!storybook) {
   // Seeds localState
@@ -12,4 +12,4 @@ if (!storybook) {
   generateUserStore();
 }
 
-export default storybook ? storybookEntry : RootScreen;
+export default storybook ? StorybookToggleComponent : RootScreen;

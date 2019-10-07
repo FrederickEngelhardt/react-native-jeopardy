@@ -10,9 +10,8 @@ storiesOf("<Navbar />", module)
   .addDecorator(withKnobs)
   .add("default", () => (
     <Navbar
-      {...navbarProps}
       toggleDarkMode={action("toggled Dark Mode")}
-      title={text("Title", navbarProps.titleText)}
-      user={{ score: number("score", navbarProps.score) }}
+      titleText={text("Title", navbarProps.titleText)}
+      user={{ score: number("score", navbarProps.user.score) }}
     />
   ));
