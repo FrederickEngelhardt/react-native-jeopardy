@@ -14,7 +14,7 @@ storiesOf("<Card />", module)
       {...cardProps}
       title={text("Title Text", cardProps.title)}
       cardState={select(
-        "Toggle Card Opened",
+        "Switch Card State",
         { points: null, question: QUESTION_STATE, answer: ANSWER_STATE },
         null
       )}
