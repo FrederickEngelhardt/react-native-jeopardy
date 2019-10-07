@@ -1,22 +1,22 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
-export type RootThemeProviderQueryVariables = {};
-export type RootThemeProviderQueryResponse = {
+export type rootThemeQueryVariables = {};
+export type rootThemeQueryResponse = {
     readonly theme: {
         readonly darkMode: boolean;
     } | null;
     readonly __typename: string;
 };
-export type RootThemeProviderQuery = {
-    readonly response: RootThemeProviderQueryResponse;
-    readonly variables: RootThemeProviderQueryVariables;
+export type rootThemeQuery = {
+    readonly response: rootThemeQueryResponse;
+    readonly variables: rootThemeQueryVariables;
 };
 
 
 
 /*
-query RootThemeProviderQuery {
+query rootThemeQuery {
   __typename
 }
 */
@@ -58,7 +58,7 @@ return {
   "kind": "Request",
   "fragment": {
     "kind": "Fragment",
-    "name": "RootThemeProviderQuery",
+    "name": "rootThemeQuery",
     "type": "Root",
     "metadata": null,
     "argumentDefinitions": [],
@@ -66,18 +66,18 @@ return {
   },
   "operation": {
     "kind": "Operation",
-    "name": "RootThemeProviderQuery",
+    "name": "rootThemeQuery",
     "argumentDefinitions": [],
     "selections": (v0/*: any*/)
   },
   "params": {
     "operationKind": "query",
-    "name": "RootThemeProviderQuery",
+    "name": "rootThemeQuery",
     "id": null,
-    "text": "query RootThemeProviderQuery {\n  __typename\n}\n",
+    "text": "query rootThemeQuery {\n  __typename\n}\n",
     "metadata": {}
   }
 };
 })();
-(node as any).hash = '8bc7cfa27ab312f19d48e0f547baa585';
+(node as any).hash = 'f9f11e121e43a5dc1b2ff55cf9492a72';
 export default node;

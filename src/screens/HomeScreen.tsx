@@ -1,5 +1,5 @@
 import React from "react";
-import styled, { withTheme } from "styled-components";
+import styled, { withTheme } from "styled-components/native";
 
 import NavBar from "../components/Navbar/Navbar";
 import BoardModuleContainer from "../containers/BoardModuleContainer";

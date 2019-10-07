@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import styled, { withTheme } from "styled-components";
+import styled, { withTheme } from "styled-components/native";
 import { Animated, StyleSheet } from "react-native";
 
 import { Theme } from "../RootThemeProvider";

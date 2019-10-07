@@ -1,14 +1,19 @@
 import { graphql, fetchQuery } from "react-relay";
 import environment from "../environment";
+import { characterHomeworldQueryResponse } from "../__generated__/characterHomeworldQuery.graphql";
 
 export const fetchCharacterHomeWorld = async () => {
   try {
-    const data = await fetchQuery(environment, characterHomeworldQuery, {})
+    const data: any = await fetchQuery(
+      environment,
+      characterHomeworldQuery,
+      {}
+    );
     return formatCharacterHomeworldQuery(data);
   } catch (e) {
-    console.warn(e);
+    return null
   }
-}
+};
 
 export const characterHomeworldQuery = graphql`
   query characterHomeworldQuery($cursor: String) {
@@ -40,7 +45,9 @@ export const characterHomeworldQuery = graphql`
   }
 `;
 
-export const formatCharacterHomeworldQuery = (data: any) => {
+export const formatCharacterHomeworldQuery = (
+  data: characterHomeworldQueryResponse
+) => {
   const pointsArray = [100, 200, 300, 400, 500];
 
   const cards = pointsArray.map((points: number, index: number) => {
@@ -48,57 +55,37 @@ export const formatCharacterHomeworldQuery = (data: any) => {
       filmConnection,
       climates,
       terrains,
-      id,
       name: planetName,
       residentConnection
     } = data.allPlanets.planets[index];
 
+    const card = {
+      points,
+      answers: [planetName],
+      questionHints: [
+        {
+          title: "climate",
+          value: climates.join(",\n")
+        },
+        { title: "terrain", value: terrains.join(", \n") }
+      ]
+    };
+
     switch (true) {
-      case residentConnection.residents > 1: {
-        const {
-          name,
-          gender,
-          species: { name: speciesName }
-        } = residentConnection.residents;
-        const questionString = `Gender: ${gender}\nPlanet: ${planetName}\nSpecies: ${speciesName} `;
-        return {
-          points,
-          answers: [name],
-          questionHints: [
-            { title: "gender", value: gender },
-            { title: "planet", value: planetName },
-            { title: "species", value: speciesName }
-          ]
-        };
-      }
-      case filmConnection.films.length > 1: {
+      case residentConnection.residents.length > 0:
+        const characterList = residentConnection.residents
+          .map(({ name }) => name)
+          .join(",\n");
+        card.questionHints.push({ title: "characters", value: characterList });
+        break;
+      case filmConnection.films.length > 1:
         const filmList = filmConnection.films
           .map(({ title }) => title)
           .join(",\n");
-
-        return {
-          points,
-          answers: [planetName],
-          questionHints: [
-            { title: "climate", value: climates.join(",\n") },
-            { title: "films", value: filmList }
-          ]
-        };
-      }
-      default: {
-        return {
-          points,
-          answers: [planetName],
-          questionHints: [
-            {
-              title: "climate",
-              value: climates.join(",\n")
-            },
-            { title: "terrain", value: terrains.join(", \n") }
-          ]
-        };
-      }
+        card.questionHints.push({ title: "films", value: filmList });
     }
+
+    return card;
   });
 
   return {

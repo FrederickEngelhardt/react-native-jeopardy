@@ -1,6 +1,6 @@
 import React from "react";
 import { Dimensions, SafeAreaView, StatusBar } from "react-native";
-import { ThemeProvider } from "styled-components";
+import { ThemeProvider } from "styled-components/native";
 import {
   addDecorator,
   configure,
