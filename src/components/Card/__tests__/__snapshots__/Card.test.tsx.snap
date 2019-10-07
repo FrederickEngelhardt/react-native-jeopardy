@@ -11,6 +11,8 @@ exports[`test renders correctly 1`] = `
   }
 >
   <TouchableOpacity
+    accessibilityLabel="Jeopardy Topic Card"
+    accessible={true}
     activeOpacity={0.5}
     style={
       Array [
