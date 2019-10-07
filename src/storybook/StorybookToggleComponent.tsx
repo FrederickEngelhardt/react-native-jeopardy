@@ -15,14 +15,15 @@ const ResponderView = styled.View`
   flex: 1;
 `;
 
-const showStorybookFirst = false
+const showStorybookFirst = false;
 
 class StorybookToggleComponent extends React.Component<{}, State> {
   _panResponder: PanResponderInstance;
   constructor(props) {
     super(props);
     this._panResponder = PanResponder.create({
-      onStartShouldSetPanResponder: (evt, gestureState) => true,
+      onStartShouldSetPanResponder: (evt, gestureState) =>
+        gestureState.numberActiveTouches >= 3 && !this.timer,
       onPanResponderMove: (evt, gestureState) => {
         if (gestureState.numberActiveTouches < 3 || this.timer) {
           return;
@@ -31,8 +32,8 @@ class StorybookToggleComponent extends React.Component<{}, State> {
       },
       onPanResponderTerminationRequest: (evt, gestureState) => true
     });
-    if (!showStorybookFirst){
-      this.generateStores()
+    if (!showStorybookFirst) {
+      this.generateStores();
     }
   }
 
@@ -59,7 +60,7 @@ class StorybookToggleComponent extends React.Component<{}, State> {
     // Due to swapping storybook we need to regenerate the relay user and theme stores
     generateThemeStore();
     generateUserStore();
-  }
+  };
 
   handleStorybookToggle = () => {
     const { isStorybook } = this.state;
@@ -67,7 +68,7 @@ class StorybookToggleComponent extends React.Component<{}, State> {
       state => ({ isStorybook: !state.isStorybook }),
       () => {
         if (isStorybook) {
-          this.generateStores()
+          this.generateStores();
         }
       }
     );
