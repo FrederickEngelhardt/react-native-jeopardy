@@ -1,23 +1,23 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
-export type UserContainerQueryVariables = {};
-export type UserContainerQueryResponse = {
+export type userQueryVariables = {};
+export type userQueryResponse = {
     readonly user: {
         readonly name: string;
         readonly score: number;
     } | null;
     readonly __typename: string;
 };
-export type UserContainerQuery = {
-    readonly response: UserContainerQueryResponse;
-    readonly variables: UserContainerQueryVariables;
+export type userQuery = {
+    readonly response: userQueryResponse;
+    readonly variables: userQueryVariables;
 };
 
 
 
 /*
-query UserContainerQuery {
+query userQuery {
   __typename
 }
 */
@@ -66,7 +66,7 @@ return {
   "kind": "Request",
   "fragment": {
     "kind": "Fragment",
-    "name": "UserContainerQuery",
+    "name": "userQuery",
     "type": "Root",
     "metadata": null,
     "argumentDefinitions": [],
@@ -74,18 +74,18 @@ return {
   },
   "operation": {
     "kind": "Operation",
-    "name": "UserContainerQuery",
+    "name": "userQuery",
     "argumentDefinitions": [],
     "selections": (v0/*: any*/)
   },
   "params": {
     "operationKind": "query",
-    "name": "UserContainerQuery",
+    "name": "userQuery",
     "id": null,
-    "text": "query UserContainerQuery {\n  __typename\n}\n",
+    "text": "query userQuery {\n  __typename\n}\n",
     "metadata": {}
   }
 };
 })();
-(node as any).hash = '0f556da1e306f688c721dc8586a51fa3';
+(node as any).hash = 'ce9cd1d04bb086715b64fbad4464e587';
 export default node;
