@@ -1,18 +1,25 @@
 import React from "react";
+import styled from "styled-components/native";
 import { graphql, QueryRenderer } from "react-relay";
 import { ActivityIndicator, Text } from "react-native";
 import environment from "../environment";
+import { darkGrey, lightBlue } from "../constants/theming";
 
 interface Props {
   children: React.ReactNode;
 }
+
+const FullScreenLoader = styled.ActivityIndicator`
+  flex: 1;
+  background-color: ${props => (props.theme.darkMode ? darkGrey : lightBlue)};
+`;
 
 const renderQuery = ({ error, props, children }) => {
   if (error) {
     return <Text>Failed to load</Text>;
   }
   if (!props) {
-    return <ActivityIndicator style={{ flex: 1 }} />;
+    return <FullScreenLoader style={{ flex: 1 }} />;
   }
 
   return React.cloneElement(children, props);
