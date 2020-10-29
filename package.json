@@ -12,12 +12,12 @@
     "relay:watch": "yarn relay --watch"
   },
   "dependencies": {
-    "@expo/vector-icons": "^10.0.6",
+    "@expo/vector-icons": "^10.0.0",
     "babel-plugin-styled-components": "^1.10.6",
-    "expo": "^35.0.0",
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-35.0.0.tar.gz",
+    "expo": "^39.0.0",
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-39.0.3.tar.gz",
     "react-relay": "^6.0.0",
     "styled-components": "^4.4.0"
   },
@@ -30,22 +30,22 @@
     "@testing-library/react-native": "^4.0.12",
     "@types/jest": "^24.0.18",
     "@types/node": "^12.7.11",
-    "@types/react": "^16.8.23",
-    "@types/react-native": "^0.57.65",
+    "@types/react": "~16.9.35",
+    "@types/react-native": "~0.63.2",
     "@types/react-relay": "^6.0.0",
     "@types/storybook__react": "^4.0.2",
     "@types/storybook__react-native": "^3.0.5",
     "babel-plugin-relay": "^6.0.0",
-    "babel-preset-expo": "^7.0.0",
+    "babel-preset-expo": "^8.3.0",
     "graphql": "^14.5.7",
-    "jest-expo": "^35.0.0",
+    "jest-expo": "^39.0.0",
     "jest-styled-components": "^6.3.3",
     "prettier": "^1.18.2",
     "relay-compiler": "^6.0.0",
     "relay-compiler-language-typescript": "^7.0.0",
     "relay-config": "^6.0.0",
     "ts-jest": "^24.1.0",
-    "typescript": "^3.6.3"
+    "typescript": "~3.9.2"
   },
   "private": true
 }

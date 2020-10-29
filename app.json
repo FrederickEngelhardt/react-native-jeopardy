@@ -3,9 +3,11 @@
     "name": "rnJeopardy",
     "slug": "rnJeopardy",
     "privacy": "public",
-    "sdkVersion": "35.0.0",
     "description": "Star Wars API themed Jeopardy app powered by GraphQL",
-    "platforms": ["ios", "android"],
+    "platforms": [
+      "ios",
+      "android"
+    ],
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -17,7 +19,9 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true
     }
