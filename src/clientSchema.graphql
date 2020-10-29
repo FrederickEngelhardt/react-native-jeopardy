@@ -1,13 +1,3 @@
-#type Card {
-#    ID: ID!
-#    title: String
-#    body: String
-#}
-#
-#type Cards {
-#    cards: Card
-#}
-
 type User {
   name: String!
   score: Int!
