@@ -1,0 +1,5 @@
+import '../src/components/Card/Card.story'
+import '../src/components/CategoryColumn/CategoryColumn.story'
+import '../src/components/Navbar/Navbar.story'
+import '../src/components/BoardModule/BoardModule.story'
+import '../src/components/Buzzer/Buzzer.story'
